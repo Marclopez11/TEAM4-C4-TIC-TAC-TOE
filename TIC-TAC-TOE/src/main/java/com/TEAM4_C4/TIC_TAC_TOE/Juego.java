@@ -36,12 +36,8 @@ public class Juego extends JFrame {
 
 	private JPanel contentPane;
 
-	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	 public static JLabel labelNombre1 = new JLabel("");
 	 public static JLabel labelNombre2 = new JLabel("");
-
-
-	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup(); 
 	
 	//este boolean determina quien empieza la partida:
 	static boolean jugador = primerTurno();
