@@ -2,6 +2,8 @@ package com.TEAM4_C4.TIC_TAC_TOE;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class App extends JFrame {
 
@@ -74,8 +77,40 @@ public class App extends JFrame {
 		tfNombreJ2.setBounds(200, 151, 86, 20);
 		contentPane.add(tfNombreJ2);
 		
-			//tfNombreJ2.setEditable(true);;
+		JButton btnStart = new JButton("Iniciar");
+		btnStart.setBounds(140, 195, 89, 23);
+		contentPane.add(btnStart);
 		
+		//LISTENERS
+		rdbtn1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tfNombreJ2.setEditable(false);
+			}
+		});
+			
+		rdbtn2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tfNombreJ2.setEditable(true);
+			}
+		});
+		
+		btnStart.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				//juego
+				
+				
+				
+			}
+		});
 		
 	}
 }
