@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import javax.swing.JToggleButton;
 import java.awt.FlowLayout;
@@ -43,6 +44,16 @@ public class Juego extends JFrame {
 								{' ',' ',' '}, 
 								{' ',' ',' '}};
 
+	 public static JLabel labelNombre1 = new JLabel("");
+	 public static JLabel labelNombre2 = new JLabel("");
+	
+	//este boolean determina quien empieza la partida:
+	static boolean jugador = primerTurno();
+	//creo una variable turno inicializada
+	static int turno = 0;
+	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
+	
+
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +69,9 @@ public class Juego extends JFrame {
 			}
 		});
 	}
+	
+	
+	
 
 	/**
 	 * Create the frame.
@@ -74,6 +88,14 @@ public class Juego extends JFrame {
 
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
+		btnNuevaPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				limpiarTablero(tablero);
+				App abrir = new App();
+				abrir.setVisible(true);
+			}
+		});
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 		
@@ -86,8 +108,10 @@ public class Juego extends JFrame {
 		contentPane.add(labelNombreJugador1);
 		
 		JLabel labelNombre1 = new JLabel("New label");
+		
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
+	
 		
 		JLabel labelNombreJugador2 = new JLabel("New label");
 		labelNombreJugador2.setBounds(499, 250, 61, 16);
@@ -95,6 +119,7 @@ public class Juego extends JFrame {
 		
 		JLabel labelNombre2 = new JLabel("New label");
 		labelNombre2.setBounds(509, 278, 61, 16);
+		labelNombre2.setBounds(509, 278, 183, 16);
 		contentPane.add(labelNombre2);
 		
 		JPanel panel = new JPanel();
@@ -103,15 +128,25 @@ public class Juego extends JFrame {
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 		
 		JToggleButton btn12 = new JToggleButton("");
+		final JToggleButton btn11 = new JToggleButton("");
+		panel.add(btn11);
+		
+		final JToggleButton btn12 = new JToggleButton("");
 		panel.add(btn12);
 		
 		JToggleButton btn13 = new JToggleButton("");
+		final JToggleButton btn13 = new JToggleButton("");
 		panel.add(btn13);
 		
 		JToggleButton btn22 = new JToggleButton("");
+		final JToggleButton btn21 = new JToggleButton("");
+		panel.add(btn21);
+		
+		final JToggleButton btn22 =new JToggleButton("");
 		panel.add(btn22);
 		
 		JToggleButton btn23 = new JToggleButton("");
+		final JToggleButton btn23 = new JToggleButton("");
 		panel.add(btn23);
 		
 		JToggleButton btn21 =new JToggleButton("");
@@ -121,25 +156,34 @@ public class Juego extends JFrame {
 		panel.add(btn11);
 		
 		JToggleButton btn31 = new JToggleButton("");
+		final JToggleButton btn31 = new JToggleButton("");
 		panel.add(btn31);
 		
 		JToggleButton btn33  =new JToggleButton("");
 		panel.add(btn33);
 		
 		JToggleButton btn32 = new JToggleButton("");
+		final JToggleButton btn32  =new JToggleButton("");
 		panel.add(btn32);
 		
 		comprobarVictoria(true);
 		
 		
+		final JToggleButton btn33 = new JToggleButton("");
+		panel.add(btn33);
 		
 		//LISTENERS
 		btn11.addMouseListener(new MouseAdapter() {
+		btn11.addActionListener(new ActionListener() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(btn11.isSelected()) {
 					btn11.setForeground(new Color(51, 204, 51));
 
+			public void actionPerformed(ActionEvent e) {
+				//TODO COMENTAR
+				if(jugador) {
+					//if !ocupada
 					btn11.setText("X");
 
 					
@@ -147,11 +191,127 @@ public class Juego extends JFrame {
 					btn11.setBackground(Color.WHITE);
 					btn11.setText("");
 
+					//implementar todas las funciones que se suceden durante el turno
+					//else mensaje no se puede colocar
+					turno();
+				}else{
+					btn11.setText("O");
+					turno();
+				}
+			}
+		});
+		btn12.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					//if !ocupada
+					btn12.setText("X");
+					turno();
+					//else mensaje no se puede colocar
+				}else{
+					btn12.setText("O");
+					turno();
+				}
+			}
+		});
+		btn13.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn13.setText("X");
+					turno();
+				}else{
+					btn13.setText("O");
+					turno();
+				}
+			}
+		});
+		btn21.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn21.setText("X");
+					turno();
+				}else{
+					btn21.setText("O");
+					turno();
+				}
+			}
+		});
+		btn22.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn22.setText("X");
+					turno();
+				}else{
+					btn22.setText("O");
+					turno();
+				}
+			}
+		});
+		btn23.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn23.setText("X");
+					turno();
+				}else{
+					btn23.setText("O");
+					turno();
+				}
+			}
+		});
+		btn31.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn31.setText("X");
+					turno();
+				}else{
+					btn31.setText("O");
+					turno();
+				}
+			}
+		});
+		btn32.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn32.setText("X");
+					turno();
+				}else{
+					btn32.setText("O");
+					turno();
+				}
+			}
+		});
+		btn33.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(jugador) {
+					btn33.setText("X");
+					turno();
+				}else{
+					btn33.setText("O");
+					turno();
 				}
 			}
 		});
 		
+		
+		
+		
 	}
+	
+	//Establece el tablero en espacios vacíos
+    static void limpiarTablero(char[][] tablero) {
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                tablero[y][x] = ' ';
+            }
+        }
+    }
 	
 	//comprobar valor en el campo de texto, que no sea "" [@MARC]
 	//recoger valores del texto y llevarlos a la otra pantalla
@@ -160,6 +320,37 @@ public class Juego extends JFrame {
 	
 	//turno [@Eloi]
 	//random quien empieza (random boolean)
+	static boolean primerTurno() {
+		
+		Random r = new Random();
+		return r.nextBoolean();
+		
+	}
+	
+	void turno() {
+		//la primera vez se decide por boolean random, true = primer jugador, false segundo jugador
+		
+		if(jugador) {
+			
+			//implementar todas las funciones que se suceden durante el turno
+			
+			//se suma el turno
+			turno++;
+			//se cambia el valor del jugador para que le toque al siguiente
+			jugador = false;
+			infoTurno.setText("Es el turno de " + jugador);
+			
+		}else {
+			
+			//implementar todas las funciones que se suceden durante el turno
+			//se suma un turno
+			turno++;
+			//se cambia el valor del jugador para que le toque al siguiente
+			jugador = true;
+			infoTurno.setText("Es el turno de " + jugador);
+		}
+		
+	}
 	
 	//una vez colocada se comprueba el tablero <- se gana o se sigue (mirar 9 comprobaciones) [@Borja]
 	
@@ -352,12 +543,15 @@ public class Juego extends JFrame {
 	//comprobar casilla (si se puede poner, que esté libre)
 	
 	//coloca
+	//metodo boolean ocupada() [@Marc]
 	
 	//mensaje no se puede colocar
 	
 	//END FASE 1
 	
 	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 
+	
+	// comprobar ficha si estuya
 	
 	//END FASE 2
 	
