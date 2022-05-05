@@ -48,48 +48,50 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 3, 0, 0));
 		
-		final JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_1);
+		final JToggleButton btn11 = new JToggleButton("");
+		btn11.setToolTipText("size=33");
+		contentPane.add(btn11);
 		
-		JToggleButton tglbtnNewToggleButton_3 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_3);
+		JToggleButton btn12 = new JToggleButton("");
+		contentPane.add(btn12);
 		
-		JToggleButton tglbtnNewToggleButton_6 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_6);
+		JToggleButton btn13 = new JToggleButton("");
+		contentPane.add(btn13);
 		
-		JToggleButton tglbtnNewToggleButton_4 =new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_4);
+		JToggleButton btn21 =new JToggleButton("");
+		contentPane.add(btn21);
 		
-		JToggleButton tglbtnNewToggleButton_2 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_2);
+		JToggleButton btn22 = new JToggleButton("");
+		contentPane.add(btn22);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton);
+		JToggleButton btn23 = new JToggleButton("");
+		contentPane.add(btn23);
 		
-		JToggleButton tglbtnNewToggleButton_5 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_5);
+		JToggleButton btn31 = new JToggleButton("");
+		btn31.setToolTipText("");
+		contentPane.add(btn31);
 		
-		JToggleButton tglbtnNewToggleButton_7 = new JToggleButton("");
-		contentPane.add(tglbtnNewToggleButton_7);
+		JToggleButton btn32 = new JToggleButton("");
+		contentPane.add(btn32);
 		
-		JToggleButton tglbtnNewToggleButton_8  =new JToggleButton(""); 
-		contentPane.add(tglbtnNewToggleButton_8);
+		JToggleButton btn33  =new JToggleButton(""); 
+		contentPane.add(btn33);
 		
 		
 		
 		//LISTENERS
-		tglbtnNewToggleButton_1.addMouseListener(new MouseAdapter() {
+		btn11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if(tglbtnNewToggleButton_1.isSelected()) {
-					tglbtnNewToggleButton_1.setForeground(new Color(51, 204, 51));
+				if(btn11.isSelected()) {
+					btn11.setForeground(new Color(51, 204, 51));
 
-					tglbtnNewToggleButton_1.setText("X");
+					btn11.setText("X");
 
 					
 				}else {
-					tglbtnNewToggleButton_1.setBackground(Color.WHITE);
-					tglbtnNewToggleButton_1.setText("");
+					btn11.setBackground(Color.WHITE);
+					btn11.setText("");
 
 				}
 			}
