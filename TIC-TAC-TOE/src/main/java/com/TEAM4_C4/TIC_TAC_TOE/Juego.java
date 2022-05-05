@@ -35,6 +35,9 @@ public class Juego extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
+	
+	//Iniciar tablero
+	static char[][] tablero = new char[3][3];
 
 	/**
 	 * Launch the application.
@@ -64,8 +67,7 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//Iniciar tablero
-		char[][] tablero = new char[3][3];
+
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
@@ -154,6 +156,10 @@ public class Juego extends JFrame {
 	//random quien empieza (random boolean)
 	
 	//una vez colocada se comprueba el tablero <- se gana o se sigue (mirar 9 comprobaciones) [@Borja]
+	public void comprobarVictoria() {
+		
+		
+	}
 	
 	//FASE 1 colocar las piezas [@eloi]
 	
