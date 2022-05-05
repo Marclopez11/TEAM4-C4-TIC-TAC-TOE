@@ -35,6 +35,12 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
+<<<<<<< HEAD
+	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
+	 public static JLabel labelNombre1 = new JLabel("");
+	 public static JLabel labelNombre2 = new JLabel("");
+
+=======
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup(); 
 	
 	//este boolean determina quien empieza la partida:
@@ -43,6 +49,7 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	
+>>>>>>> main
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +65,9 @@ public class Juego extends JFrame {
 			}
 		});
 	}
+	
+	
+	
 
 	/**
 	 * Create the frame.
@@ -72,9 +82,17 @@ public class Juego extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Iniciar tablero
-		char[][] tablero = new char[3][3];
+		final char[][] tablero = new char[3][3];
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
+		btnNuevaPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				limpiarTablero(tablero);
+				App abrir = new App();
+				abrir.setVisible(true);
+			}
+		});
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 		
@@ -82,20 +100,13 @@ public class Juego extends JFrame {
 		infoTurno.setBounds(489, 54, 138, 16);
 		contentPane.add(infoTurno);
 		
-		JLabel labelNombreJugador1 = new JLabel("New label");
-		labelNombreJugador1.setBounds(489, 98, 61, 16);
-		contentPane.add(labelNombreJugador1);
 		
-		JLabel labelNombre1 = new JLabel("New label");
+		
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
+	
 		
-		JLabel labelNombreJugador2 = new JLabel("New label");
-		labelNombreJugador2.setBounds(499, 250, 61, 16);
-		contentPane.add(labelNombreJugador2);
-		
-		JLabel labelNombre2 = new JLabel("New label");
-		labelNombre2.setBounds(509, 278, 61, 16);
+		labelNombre2.setBounds(509, 278, 183, 16);
 		contentPane.add(labelNombre2);
 		
 		JPanel panel = new JPanel();
@@ -243,7 +254,19 @@ public class Juego extends JFrame {
 			}
 		});
 		
+		
+		
+		
 	}
+	
+	//Establece el tablero en espacios vacíos
+    static void limpiarTablero(char[][] tablero) {
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                tablero[y][x] = ' ';
+            }
+        }
+    }
 	
 	//comprobar valor en el campo de texto, que no sea "" [@MARC]
 	//recoger valores del texto y llevarlos a la otra pantalla
