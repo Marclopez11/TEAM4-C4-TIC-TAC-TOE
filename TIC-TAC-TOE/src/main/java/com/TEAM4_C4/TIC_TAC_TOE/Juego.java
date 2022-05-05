@@ -143,9 +143,10 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//TODO COMENTAR
 				if(jugador) {
+					//if !ocupada
 					btn11.setText("X");
 					//implementar todas las funciones que se suceden durante el turno
-					
+					//else mensaje no se puede colocar
 					turno();
 				}else{
 					btn11.setText("O");
@@ -157,8 +158,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
+					//if !ocupada
 					btn12.setText("X");
 					turno();
+					//else mensaje no se puede colocar
 				}else{
 					btn12.setText("O");
 					turno();
@@ -308,14 +311,15 @@ public class Juego extends JFrame {
 	//FASE 1 colocar las piezas [@eloi]
 	
 	//comprobar casilla (si se puede poner, que esté libre)
-	
-	//coloca
+	//metodo boolean ocupada() [@Marc]
 	
 	//mensaje no se puede colocar
 	
 	//END FASE 1
 	
 	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 
+	
+	// comprobar ficha si estuya
 	
 	//END FASE 2
 	
