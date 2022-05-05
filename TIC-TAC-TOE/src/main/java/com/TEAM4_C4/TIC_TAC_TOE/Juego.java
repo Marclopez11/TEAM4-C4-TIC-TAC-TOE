@@ -36,70 +36,13 @@ public class Juego extends JFrame {
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
+	public static JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
+	
 	//Iniciar tablero
-	static char[][] tablero = { {'X','-','-'}, 
-								{'X', '-','-'}, 
-								{'X','-','-'}};
+	static char[][] tablero = { {' ',' ',' '}, 
+								{' ',' ',' '}, 
+								{' ',' ',' '}};
 
-	
-	// Constantes de Victoria:
-	
-	final static int[][] VICTORIAVERTICAL1 = {{1, 0, 0}, {1, 0, 0}, {1, 0, 0}};
-	/*
-	 *  [1] [ ] [ ]
-	 *  [1] [ ] [ ]
-	 *  [1] [ ] [ ]
-	 */
-	
-	final static int[][] VICTORIAVERTICAL2 = {{0, 1, 0}, {0, 1, 0}, {0, 1, 0}};
-	/*
-	 *  [ ] [1] [ ]
-	 *  [ ] [1] [ ]
-	 *  [ ] [1] [ ]
-	 */
-	
-	final static int[][] VICTORIAVERTICAL3 = {{0, 0, 1}, {0, 0, 1}, {0, 0, 1}};
-	/*
-	 *  [ ] [ ] [1]
-	 *  [ ] [ ] [1]
-	 *  [ ] [ ] [1]
-	 */
-	
-	final static int[][] VICTORIAHORIZONTAL1 = {{1, 1, 1}, {0, 0, 0}, {0, 0, 0}};
-	/*
-	 *  [1] [1] [1]
-	 *  [ ] [ ] [ ]
-	 *  [ ] [ ] [ ]
-	 */
-	
-	final static int[][] VICTORIAHORIZONTAL2 = {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}};
-	/* 
-	 *  [ ] [ ] [ ]
-	 *  [1] [1] [1]
-	 *  [ ] [ ] [ ]
-	 */
-
-	final static int[][] VICTORIAHORIZONTAL3 = {{0, 0, 0}, {0, 0, 0}, {1, 1, 1}};
-	/* 
-	 *  [ ] [ ] [ ]
-	 *  [ ] [ ] [ ]
-	 *  [1] [1] [1]
-	 */
-	
-	final static int[][] VICTORIADIAGONAL1 = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
-	/* 
-	 *  [1] [ ] [ ]
-	 *  [ ] [1] [ ]
-	 *  [ ] [ ] [1]
-	 */
-	
-	final static int[][] VICTORIADIAGONAL2 = {{0, 0, 1}, {0, 1, 0}, {1, 0, 0}};
-	/* 
-	 *  [ ] [ ] [1]
-	 *  [ ] [1] [ ]
-	 *  [1] [ ] [ ]
-	 */
-	
 	/**
 	 * Launch the application.
 	 */
@@ -134,7 +77,7 @@ public class Juego extends JFrame {
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 		
-		JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
+		
 		infoTurno.setBounds(489, 54, 138, 16);
 		contentPane.add(infoTurno);
 		
@@ -228,27 +171,177 @@ public class Juego extends JFrame {
 	
 	public void comprobarVictoria(boolean jugador) {
 		// mientras no tengamos ganador, comprobaremos todas la combinaciones ganadoras:
-		boolean tenemosGanador = false;
+		boolean ganaX = false;
+		boolean ganaO = false;
+		// ganaX = true;
+		// ganaO = true;
 		
 		// comprobaremos el array con cada una de las combinaciones ganadoras
 		
 		//X o O
 		if(jugador) {
-			//turno X 
+			//turno X
 			if(tablero[0][0] == 'X' && tablero[1][0] == 'X' && tablero[2][0] == 'X') {
 				
-				//static char[][] tablero = new char[3][3];
-				//final static int[][] VICTORIAVERTICAL1 = {{1, 0, 0}, {1, 0, 0}, {1, 0, 0}};
 				/*	  0   1   2
 				 * 0 [1] [ ] [ ]
 				 * 1 [1] [ ] [ ]
 				 * 2 [1] [ ] [ ]
 				 */
-				System.out.println("win");
+				ganaX = true;
+				
 			}
+			if(tablero[0][1] == 'X' && tablero[1][1] == 'X' && tablero[2][1] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [1] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [1] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][2] == 'X' && tablero[1][2] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [ ] [1]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[1][0] == 'X' && tablero[1][1] == 'X' && tablero[1][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [1] [1] [1]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[2][0] == 'X' && tablero[2][1] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [1] [1] [1]
+				 */
+				ganaX = true;
+			}
+			
+			// diagonal1
+			if(tablero[0][0] == 'X' && tablero[1][1] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaX = true;
+			}
+			
+			// diagonal2
+			if(tablero[0][2] == 'X' && tablero[1][1] == 'X' && tablero[2][0] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [1] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			
+			if (ganaX == true) infoTurno.setText("El equipo X ha ganado");
 			
 		}else {
 			//turno O
+			if(tablero[0][0] == 'O' && tablero[1][0] == 'O' && tablero[2][0] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [1] [ ] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][1] == 'O' && tablero[1][1] == 'O' && tablero[2][1] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [1] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [1] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][2] == 'O' && tablero[1][2] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [ ] [1]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[1][0] == 'O' && tablero[1][1] == 'O' && tablero[1][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [1] [1] [1]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[2][0] == 'O' && tablero[2][1] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [1] [1] [1]
+				 */
+				ganaO = true;
+			}
+			
+			// diagonal1
+			if(tablero[0][0] == 'O' && tablero[1][1] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaO = true;
+			}
+			
+			// diagonal2
+			if(tablero[0][2] == 'O' && tablero[1][1] == 'O' && tablero[2][0] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [1] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			
+			if (ganaO == true) infoTurno.setText("El equipo O ha ganado");
 			
 		}
 			  
