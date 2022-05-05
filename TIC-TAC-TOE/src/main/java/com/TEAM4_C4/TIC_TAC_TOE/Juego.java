@@ -35,12 +35,12 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
-<<<<<<< HEAD
+
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	 public static JLabel labelNombre1 = new JLabel("");
 	 public static JLabel labelNombre2 = new JLabel("");
 
-=======
+
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup(); 
 	
 	//este boolean determina quien empieza la partida:
@@ -49,7 +49,7 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	
->>>>>>> main
+
 	/**
 	 * Launch the application.
 	 */
