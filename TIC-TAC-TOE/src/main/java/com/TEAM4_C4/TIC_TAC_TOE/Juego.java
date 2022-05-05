@@ -136,12 +136,12 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//TODO COMENTAR
 				if(jugador) {
-					btn11.setText(jugador+"");
+					btn11.setText("X");
 					//implementar todas las funciones que se suceden durante el turno
 					
 					turno();
 				}else{
-					btn11.setText(jugador+"");
+					btn11.setText("O");
 					turno();
 				}
 			}
@@ -150,10 +150,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn12.setText(jugador+"");
+					btn12.setText("X");
 					turno();
 				}else{
-					btn12.setText(jugador+"");
+					btn12.setText("O");
 					turno();
 				}
 			}
@@ -162,10 +162,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn13.setText(jugador+"");
+					btn13.setText("X");
 					turno();
 				}else{
-					btn13.setText(jugador+"");
+					btn13.setText("O");
 					turno();
 				}
 			}
@@ -174,10 +174,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn21.setText(jugador+"");
+					btn21.setText("X");
 					turno();
 				}else{
-					btn21.setText(jugador+"");
+					btn21.setText("O");
 					turno();
 				}
 			}
@@ -186,10 +186,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn22.setText(jugador+"");
+					btn22.setText("X");
 					turno();
 				}else{
-					btn22.setText(jugador+"");
+					btn22.setText("O");
 					turno();
 				}
 			}
@@ -198,10 +198,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn23.setText(jugador+"");
+					btn23.setText("X");
 					turno();
 				}else{
-					btn23.setText(jugador+"");
+					btn23.setText("O");
 					turno();
 				}
 			}
@@ -210,10 +210,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn31.setText(jugador+"");
+					btn31.setText("X");
 					turno();
 				}else{
-					btn31.setText(jugador+"");
+					btn31.setText("O");
 					turno();
 				}
 			}
@@ -222,10 +222,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn32.setText(jugador+"");
+					btn32.setText("X");
 					turno();
 				}else{
-					btn32.setText(jugador+"");
+					btn32.setText("O");
 					turno();
 				}
 			}
@@ -234,10 +234,10 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					btn33.setText(jugador+"");
+					btn33.setText("X");
 					turno();
 				}else{
-					btn33.setText(jugador+"");
+					btn33.setText("O");
 					turno();
 				}
 			}
