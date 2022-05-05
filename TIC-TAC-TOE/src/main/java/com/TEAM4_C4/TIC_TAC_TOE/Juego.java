@@ -34,9 +34,7 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField nombre1;
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
-	private JTextField nombre2;
 
 	/**
 	 * Launch the application.
@@ -66,13 +64,18 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNuevaPartida = new JButton("NuevaPartida");
+		//Iniciar tablero
+		char[][] tablero = new char[3][3];
+		
+		
+		
+		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 		
-		JLabel infoPartida = new JLabel("X, coloca ficha...");
-		infoPartida.setBounds(489, 54, 61, 16);
-		contentPane.add(infoPartida);
+		JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
+		infoTurno.setBounds(489, 54, 138, 16);
+		contentPane.add(infoTurno);
 		
 		JLabel labelNombreJugador1 = new JLabel("New label");
 		labelNombreJugador1.setBounds(489, 98, 61, 16);
@@ -82,25 +85,6 @@ public class Juego extends JFrame {
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
 		
-		nombre1 = new JTextField();
-		nombre1.setBounds(579, 132, 130, 26);
-		contentPane.add(nombre1);
-		nombre1.setColumns(10);
-		
-		JLabel labelTipo1 = new JLabel("New label");
-		labelTipo1.setBounds(499, 196, 61, 16);
-		contentPane.add(labelTipo1);
-		
-		JRadioButton rdBtnHum1 = new JRadioButton("New radio button");
-		buttonGroupTipo1.add(rdBtnHum1);
-		rdBtnHum1.setBounds(579, 192, 141, 23);
-		contentPane.add(rdBtnHum1);
-		
-		JRadioButton rdBtnCpu1 = new JRadioButton("New radio button");
-		buttonGroupTipo1.add(rdBtnCpu1);
-		rdBtnCpu1.setBounds(732, 192, 141, 23);
-		contentPane.add(rdBtnCpu1);
-		
 		JLabel labelNombreJugador2 = new JLabel("New label");
 		labelNombreJugador2.setBounds(499, 250, 61, 16);
 		contentPane.add(labelNombreJugador2);
@@ -108,23 +92,6 @@ public class Juego extends JFrame {
 		JLabel labelNombre2 = new JLabel("New label");
 		labelNombre2.setBounds(509, 278, 61, 16);
 		contentPane.add(labelNombre2);
-		
-		nombre2 = new JTextField();
-		nombre2.setBounds(579, 273, 130, 26);
-		contentPane.add(nombre2);
-		nombre2.setColumns(10);
-		
-		JLabel labelTipo2 = new JLabel("New label");
-		labelTipo2.setBounds(499, 335, 61, 16);
-		contentPane.add(labelTipo2);
-		
-		JRadioButton rdBtnHum2 = new JRadioButton("New radio button");
-		rdBtnHum2.setBounds(579, 331, 141, 23);
-		contentPane.add(rdBtnHum2);
-		
-		JRadioButton rdBtnCpu2 = new JRadioButton("New radio button");
-		rdBtnCpu2.setBounds(732, 331, 141, 23);
-		contentPane.add(rdBtnCpu2);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(18, 26, 440, 325);
