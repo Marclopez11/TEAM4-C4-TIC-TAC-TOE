@@ -37,7 +37,10 @@ public class Juego extends JFrame {
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
 	//Iniciar tablero
-	static char[][] tablero = new char[3][3];
+	static char[][] tablero = { {'X','-','-'}, 
+								{'X', '-','-'}, 
+								{'X','-','-'}};
+
 	
 	// Constantes de Victoria:
 	
@@ -183,6 +186,8 @@ public class Juego extends JFrame {
 		JToggleButton btn32 = new JToggleButton("");
 		panel.add(btn32);
 		
+		comprobarVictoria(true);
+		
 		
 		
 		//LISTENERS
@@ -221,88 +226,31 @@ public class Juego extends JFrame {
 	 *  [ ] [ ] [ ]
 	 */
 	
-	public void comprobarVictoria() {
+	public void comprobarVictoria(boolean jugador) {
 		// mientras no tengamos ganador, comprobaremos todas la combinaciones ganadoras:
 		boolean tenemosGanador = false;
 		
 		// comprobaremos el array con cada una de las combinaciones ganadoras
-
 		
-		switch(expression) {
-		  case 1: // victoria vertical 1
-			  	/* 
-				 *  [1] [0] [0]
-				 *  [1] [0] [0]
-				 *  [1] [0] [0]
+		//X o O
+		if(jugador) {
+			//turno X 
+			if(tablero[0][0] == 'X' && tablero[1][0] == 'X' && tablero[2][0] == 'X') {
+				
+				//static char[][] tablero = new char[3][3];
+				//final static int[][] VICTORIAVERTICAL1 = {{1, 0, 0}, {1, 0, 0}, {1, 0, 0}};
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [1] [ ] [ ]
+				 * 2 [1] [ ] [ ]
 				 */
-			  
-			  
-		    break;
-		  case 2: // victoria vertical 2
-			  	/* 
-				 *  [0] [1] [0]
-				 *  [0] [1] [0]
-				 *  [0] [1] [0]
-				 */
-			  
-			  
-		    break;
-		  case 3: // victoria vertical 3
-			  	/* 
-				 *  [0] [0] [1]
-				 *  [0] [0] [1]
-				 *  [0] [0] [1]
-				 */
-			  
-			  
-		    break;
-		  case 4: // victoria horizontal 1
-			  	/* 
-				 *  [1] [1] [1]
-				 *  [0] [0] [0]
-				 *  [0] [0] [0]
-				 */
-			  
-			  
-		    break;
-		  case 5: // victoria horizontal 2
-			  	/* 
-				 *  [0] [0] [0]
-				 *  [1] [1] [1]
-				 *  [0] [0] [0]
-				 */
-			  
-			  
-		    break;
-		  case 6: // victoria horizontal 2
-			  	/* 
-				 *  [0] [0] [0]
-				 *  [0] [0] [0]
-				 *  [1] [1] [1]
-				 */
-			  
-			  
-		    break;
-		  case 7: // victoria diagonal 1
-			  	/* 
-				 *  [1] [0] [0]
-				 *  [0] [1] [0]
-				 *  [0] [0] [1]
-				 */
-			  
-			  
-		    break;
-		  case 8: // victoria diagonal 2
-			  	/* 
-				 *  [0] [0] [1]
-				 *  [0] [1] [0]
-				 *  [1] [0] [0]
-				 */
-			  
-			  
-		    break;
-		  default:
-		    // code block
+				System.out.println("win");
+			}
+			
+		}else {
+			//turno O
+			
+		}
 			  
 		}
 	
