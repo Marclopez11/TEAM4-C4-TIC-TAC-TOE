@@ -66,9 +66,7 @@ public class Juego extends JFrame {
 		
 		//Iniciar tablero
 		char[][] tablero = new char[3][3];
-		
-		
-		
+
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
@@ -144,9 +142,34 @@ public class Juego extends JFrame {
 				}
 			}
 		});
-			
-		
-			
 		
 	}
+	
+	//comprobar valor en el campo de texto, que no sea "" [@MARC]
+	//recoger valores del texto y llevarlos a la otra pantalla
+	//reniciar: nos lleva a la pestaña App y pone tablero de 0 [@MARC]
+	
+	
+	//turno [@Eloi]
+	//random quien empieza (random boolean)
+	
+	//una vez colocada se comprueba el tablero <- se gana o se sigue (mirar 9 comprobaciones) [@Borja]
+	
+	//FASE 1 colocar las piezas [@eloi]
+	
+	//comprobar casilla (si se puede poner, que esté libre)
+	
+	//coloca
+	
+	//mensaje no se puede colocar
+	
+	//END FASE 1
+	
+	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 
+	
+	//END FASE 2
+	
+	
+	
+	
 }

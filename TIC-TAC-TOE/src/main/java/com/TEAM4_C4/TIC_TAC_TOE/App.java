@@ -107,10 +107,12 @@ public class App extends JFrame {
 
 				//juego
 				
-				
-				
 			}
-		});
+		});	
 		
 	}
+	
+	//comprobar valor en el campo de texto, que no sea "" [@MARC]
+	//recoger valores del texto y llevarlos a la otra pantalla
+	
 }
