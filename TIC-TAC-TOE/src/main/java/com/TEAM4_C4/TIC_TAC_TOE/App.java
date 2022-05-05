@@ -48,43 +48,55 @@ public class App extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		
+		JRadioButton rdbtn1 = new JRadioButton("1 Jugador");
 
 		final JRadioButton rdbtn1 = new JRadioButton("1 Jugador");
 		rdbtn1.setSelected(true);
 		numeroJugadores.add(rdbtn1);
 		rdbtn1.setBounds(89, 84, 109, 23);
 		contentPane.add(rdbtn1);
+		
+		JRadioButton rdbtn2 = new JRadioButton("2 Jugadores");
 
 		final JRadioButton rdbtn2 = new JRadioButton("2 Jugadores");
 		numeroJugadores.add(rdbtn2);
 		rdbtn2.setBounds(200, 84, 109, 23);
 		contentPane.add(rdbtn2);
+		
 
 		JLabel lblNewLabel = new JLabel("Nombre Jugador 1");
 		lblNewLabel.setBounds(89, 132, 88, 14);
 		contentPane.add(lblNewLabel);
+		
 
 		tfNombreJ1 = new JTextField();
 		tfNombreJ1.setBounds(89, 151, 86, 20);
 		contentPane.add(tfNombreJ1);
 		tfNombreJ1.setColumns(10);
+		
 
 		JLabel lblNewLabel2 = new JLabel("Nombre Jugador 2");
 		lblNewLabel2.setBounds(200, 132, 88, 14);
 		contentPane.add(lblNewLabel2);
+		
 
 		tfNombreJ2 = new JTextField();
 		tfNombreJ2.setEditable(false);
 		tfNombreJ2.setColumns(10);
 		tfNombreJ2.setBounds(200, 151, 86, 20);
 		contentPane.add(tfNombreJ2);
+		
 
 		JButton btnStart = new JButton("Iniciar");
 		btnStart.setBounds(140, 195, 89, 23);
 		contentPane.add(btnStart);
+		
+		//LISTENERS
 
 		// LISTENERS
 		rdbtn1.addActionListener(new ActionListener() {
+			
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -92,8 +104,10 @@ public class App extends JFrame {
 				tfNombreJ2.setEditable(false);
 			}
 		});
+			
 
 		rdbtn2.addActionListener(new ActionListener() {
+			
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -101,12 +115,15 @@ public class App extends JFrame {
 				tfNombreJ2.setEditable(true);
 			}
 		});
+		
 
 		btnStart.addActionListener(new ActionListener() {
+			
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				
 				Juego abrir = new Juego();
 
 				if (rdbtn1.isSelected() && !tfNombreJ1.getText().trim().isEmpty()) {
@@ -132,9 +149,15 @@ public class App extends JFrame {
 				}
 
 			}
+		});	
+		
 		});
 
 	}
+	
+	//comprobar valor en el campo de texto, que no sea "" [@MARC]
+	//recoger valores del texto y llevarlos a la otra pantalla
+	
 
 	// comprobar valor en el campo de texto, que no sea "" [@MARC]
 	// recoger valores del texto y llevarlos a la otra pantalla

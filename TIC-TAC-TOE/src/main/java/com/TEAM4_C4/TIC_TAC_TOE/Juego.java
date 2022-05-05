@@ -35,6 +35,16 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
+<<<<<<< HEAD
+	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
+	
+	public static JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
+	
+	//Iniciar tablero
+	static char[][] tablero = { {' ',' ',' '}, 
+								{' ',' ',' '}, 
+								{' ',' ',' '}};
+=======
 
 	 public static JLabel labelNombre1 = new JLabel("");
 	 public static JLabel labelNombre2 = new JLabel("");
@@ -45,6 +55,7 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	
+>>>>>>> main
 
 	/**
 	 * Launch the application.
@@ -77,8 +88,12 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+<<<<<<< HEAD
+
+=======
 		//Iniciar tablero
 		final char[][] tablero = new char[3][3];
+>>>>>>> main
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.addActionListener(new ActionListener() {
@@ -134,8 +149,14 @@ public class Juego extends JFrame {
 		final JToggleButton btn32  =new JToggleButton("");
 		panel.add(btn32);
 		
+<<<<<<< HEAD
+		comprobarVictoria(true);
+		
+		
+=======
 		final JToggleButton btn33 = new JToggleButton("");
 		panel.add(btn33);
+>>>>>>> main
 		
 		//LISTENERS
 		btn11.addActionListener(new ActionListener() {
@@ -307,6 +328,190 @@ public class Juego extends JFrame {
 	}
 	
 	//una vez colocada se comprueba el tablero <- se gana o se sigue (mirar 9 comprobaciones) [@Borja]
+	
+	/* Array de 3x3
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 */
+	
+	public void comprobarVictoria(boolean jugador) {
+		// mientras no tengamos ganador, comprobaremos todas la combinaciones ganadoras:
+		boolean ganaX = false;
+		boolean ganaO = false;
+		// ganaX = true;
+		// ganaO = true;
+		
+		// comprobaremos el array con cada una de las combinaciones ganadoras
+		
+		//X o O
+		if(jugador) {
+			//turno X
+			if(tablero[0][0] == 'X' && tablero[1][0] == 'X' && tablero[2][0] == 'X') {
+				
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [1] [ ] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaX = true;
+				
+			}
+			if(tablero[0][1] == 'X' && tablero[1][1] == 'X' && tablero[2][1] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [1] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [1] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][2] == 'X' && tablero[1][2] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [ ] [1]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[1][0] == 'X' && tablero[1][1] == 'X' && tablero[1][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [1] [1] [1]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			if(tablero[2][0] == 'X' && tablero[2][1] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [1] [1] [1]
+				 */
+				ganaX = true;
+			}
+			
+			// diagonal1
+			if(tablero[0][0] == 'X' && tablero[1][1] == 'X' && tablero[2][2] == 'X') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaX = true;
+			}
+			
+			// diagonal2
+			if(tablero[0][2] == 'X' && tablero[1][1] == 'X' && tablero[2][0] == 'X') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [1] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaX = true;
+			}
+			
+			if (ganaX == true) infoTurno.setText("El equipo X ha ganado");
+			
+		}else {
+			//turno O
+			if(tablero[0][0] == 'O' && tablero[1][0] == 'O' && tablero[2][0] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [1] [ ] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][1] == 'O' && tablero[1][1] == 'O' && tablero[2][1] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [1] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [1] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][2] == 'O' && tablero[1][2] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [ ] [1]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [1] [1]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[1][0] == 'O' && tablero[1][1] == 'O' && tablero[1][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [1] [1] [1]
+				 * 2 [ ] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			if(tablero[2][0] == 'O' && tablero[2][1] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [ ]
+				 * 1 [ ] [ ] [ ]
+				 * 2 [1] [1] [1]
+				 */
+				ganaO = true;
+			}
+			
+			// diagonal1
+			if(tablero[0][0] == 'O' && tablero[1][1] == 'O' && tablero[2][2] == 'O') {
+				/*	  0   1   2
+				 * 0 [1] [ ] [ ]
+				 * 1 [ ] [1] [ ]
+				 * 2 [ ] [ ] [1]
+				 */
+				ganaO = true;
+			}
+			
+			// diagonal2
+			if(tablero[0][2] == 'O' && tablero[1][1] == 'O' && tablero[2][0] == 'O') {
+				/*	  0   1   2
+				 * 0 [ ] [ ] [1]
+				 * 1 [ ] [1] [ ]
+				 * 2 [1] [ ] [ ]
+				 */
+				ganaO = true;
+			}
+			
+			if (ganaO == true) infoTurno.setText("El equipo O ha ganado");
+			
+		}
+			  
+		}
 	
 	//FASE 1 colocar las piezas [@eloi]
 	
