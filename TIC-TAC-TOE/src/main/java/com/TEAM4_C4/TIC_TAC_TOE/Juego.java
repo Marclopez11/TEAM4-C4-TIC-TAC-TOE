@@ -96,7 +96,6 @@ public class Juego extends JFrame {
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 		
-		JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
 		
 		infoTurno.setBounds(489, 54, 138, 16);
 		contentPane.add(infoTurno);
@@ -115,67 +114,42 @@ public class Juego extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 		
-		JToggleButton btn12 = new JToggleButton("");
 		final JToggleButton btn11 = new JToggleButton("");
 		panel.add(btn11);
 		
 		final JToggleButton btn12 = new JToggleButton("");
 		panel.add(btn12);
 		
-		JToggleButton btn13 = new JToggleButton("");
 		final JToggleButton btn13 = new JToggleButton("");
 		panel.add(btn13);
 		
-		JToggleButton btn22 = new JToggleButton("");
 		final JToggleButton btn21 = new JToggleButton("");
 		panel.add(btn21);
 		
 		final JToggleButton btn22 =new JToggleButton("");
 		panel.add(btn22);
 		
-		JToggleButton btn23 = new JToggleButton("");
 		final JToggleButton btn23 = new JToggleButton("");
 		panel.add(btn23);
 		
-		JToggleButton btn21 =new JToggleButton("");
-		panel.add(btn21);
-		
-		final JToggleButton btn11 = new JToggleButton("");
-		panel.add(btn11);
-		
-		JToggleButton btn31 = new JToggleButton("");
 		final JToggleButton btn31 = new JToggleButton("");
 		panel.add(btn31);
 		
-		JToggleButton btn33  =new JToggleButton("");
-		panel.add(btn33);
-		
-		JToggleButton btn32 = new JToggleButton("");
 		final JToggleButton btn32  =new JToggleButton("");
 		panel.add(btn32);
-		
 		
 		final JToggleButton btn33 = new JToggleButton("");
 		panel.add(btn33);
 		
 		//LISTENERS
-		btn11.addMouseListener(new MouseAdapter() {
 		btn11.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(btn11.isSelected()) {
-					btn11.setForeground(new Color(51, 204, 51));
-
 			public void actionPerformed(ActionEvent e) {
 				//TODO COMENTAR
 				if(jugador) {
 					btn11.setText("X");
 					//implementar todas las funciones que se suceden durante el turno
 					
-				}else {
-					btn11.setBackground(Color.WHITE);
-					btn11.setText("");
-
 					turno();
 				}else{
 					btn11.setText("O");
