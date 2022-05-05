@@ -35,6 +35,7 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
+<<<<<<< HEAD
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
 	public static JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
@@ -43,6 +44,7 @@ public class Juego extends JFrame {
 	static char[][] tablero = { {' ',' ',' '}, 
 								{' ',' ',' '}, 
 								{' ',' ',' '}};
+=======
 
 	 public static JLabel labelNombre1 = new JLabel("");
 	 public static JLabel labelNombre2 = new JLabel("");
@@ -53,6 +55,7 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	
+>>>>>>> main
 
 	/**
 	 * Launch the application.
@@ -85,7 +88,12 @@ public class Juego extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+<<<<<<< HEAD
 
+=======
+		//Iniciar tablero
+		final char[][] tablero = new char[3][3];
+>>>>>>> main
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.addActionListener(new ActionListener() {
@@ -103,22 +111,12 @@ public class Juego extends JFrame {
 		infoTurno.setBounds(489, 54, 138, 16);
 		contentPane.add(infoTurno);
 		
-		JLabel labelNombreJugador1 = new JLabel("New label");
-		labelNombreJugador1.setBounds(489, 98, 61, 16);
-		contentPane.add(labelNombreJugador1);
 		
-		JLabel labelNombre1 = new JLabel("New label");
 		
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
 	
 		
-		JLabel labelNombreJugador2 = new JLabel("New label");
-		labelNombreJugador2.setBounds(499, 250, 61, 16);
-		contentPane.add(labelNombreJugador2);
-		
-		JLabel labelNombre2 = new JLabel("New label");
-		labelNombre2.setBounds(509, 278, 61, 16);
 		labelNombre2.setBounds(509, 278, 183, 16);
 		contentPane.add(labelNombre2);
 		
@@ -127,70 +125,47 @@ public class Juego extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 		
-		JToggleButton btn12 = new JToggleButton("");
 		final JToggleButton btn11 = new JToggleButton("");
 		panel.add(btn11);
 		
 		final JToggleButton btn12 = new JToggleButton("");
 		panel.add(btn12);
 		
-		JToggleButton btn13 = new JToggleButton("");
 		final JToggleButton btn13 = new JToggleButton("");
 		panel.add(btn13);
 		
-		JToggleButton btn22 = new JToggleButton("");
 		final JToggleButton btn21 = new JToggleButton("");
 		panel.add(btn21);
 		
 		final JToggleButton btn22 =new JToggleButton("");
 		panel.add(btn22);
 		
-		JToggleButton btn23 = new JToggleButton("");
 		final JToggleButton btn23 = new JToggleButton("");
 		panel.add(btn23);
 		
-		JToggleButton btn21 =new JToggleButton("");
-		panel.add(btn21);
-		
-		final JToggleButton btn11 = new JToggleButton("");
-		panel.add(btn11);
-		
-		JToggleButton btn31 = new JToggleButton("");
 		final JToggleButton btn31 = new JToggleButton("");
 		panel.add(btn31);
 		
-		JToggleButton btn33  =new JToggleButton("");
-		panel.add(btn33);
-		
-		JToggleButton btn32 = new JToggleButton("");
 		final JToggleButton btn32  =new JToggleButton("");
 		panel.add(btn32);
 		
+<<<<<<< HEAD
 		comprobarVictoria(true);
 		
 		
+=======
 		final JToggleButton btn33 = new JToggleButton("");
 		panel.add(btn33);
+>>>>>>> main
 		
 		//LISTENERS
-		btn11.addMouseListener(new MouseAdapter() {
 		btn11.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(btn11.isSelected()) {
-					btn11.setForeground(new Color(51, 204, 51));
-
 			public void actionPerformed(ActionEvent e) {
 				//TODO COMENTAR
 				if(jugador) {
 					//if !ocupada
 					btn11.setText("X");
-
-					
-				}else {
-					btn11.setBackground(Color.WHITE);
-					btn11.setText("");
-
 					//implementar todas las funciones que se suceden durante el turno
 					//else mensaje no se puede colocar
 					turno();
@@ -541,8 +516,6 @@ public class Juego extends JFrame {
 	//FASE 1 colocar las piezas [@eloi]
 	
 	//comprobar casilla (si se puede poner, que esté libre)
-	
-	//coloca
 	//metodo boolean ocupada() [@Marc]
 	
 	//mensaje no se puede colocar
