@@ -38,7 +38,65 @@ public class Juego extends JFrame {
 	
 	//Iniciar tablero
 	static char[][] tablero = new char[3][3];
+	
+	// Constantes de Victoria:
+	
+	final static int[][] VICTORIAVERTICAL1 = {{1, 0, 0}, {1, 0, 0}, {1, 0, 0}};
+	/*
+	 *  [1] [ ] [ ]
+	 *  [1] [ ] [ ]
+	 *  [1] [ ] [ ]
+	 */
+	
+	final static int[][] VICTORIAVERTICAL2 = {{0, 1, 0}, {0, 1, 0}, {0, 1, 0}};
+	/*
+	 *  [ ] [1] [ ]
+	 *  [ ] [1] [ ]
+	 *  [ ] [1] [ ]
+	 */
+	
+	final static int[][] VICTORIAVERTICAL3 = {{0, 0, 1}, {0, 0, 1}, {0, 0, 1}};
+	/*
+	 *  [ ] [ ] [1]
+	 *  [ ] [ ] [1]
+	 *  [ ] [ ] [1]
+	 */
+	
+	final static int[][] VICTORIAHORIZONTAL1 = {{1, 1, 1}, {0, 0, 0}, {0, 0, 0}};
+	/*
+	 *  [1] [1] [1]
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 */
+	
+	final static int[][] VICTORIAHORIZONTAL2 = {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}};
+	/* 
+	 *  [ ] [ ] [ ]
+	 *  [1] [1] [1]
+	 *  [ ] [ ] [ ]
+	 */
 
+	final static int[][] VICTORIAHORIZONTAL3 = {{0, 0, 0}, {0, 0, 0}, {1, 1, 1}};
+	/* 
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 *  [1] [1] [1]
+	 */
+	
+	final static int[][] VICTORIADIAGONAL1 = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+	/* 
+	 *  [1] [ ] [ ]
+	 *  [ ] [1] [ ]
+	 *  [ ] [ ] [1]
+	 */
+	
+	final static int[][] VICTORIADIAGONAL2 = {{0, 0, 1}, {0, 1, 0}, {1, 0, 0}};
+	/* 
+	 *  [ ] [ ] [1]
+	 *  [ ] [1] [ ]
+	 *  [1] [ ] [ ]
+	 */
+	
 	/**
 	 * Launch the application.
 	 */
@@ -156,10 +214,97 @@ public class Juego extends JFrame {
 	//random quien empieza (random boolean)
 	
 	//una vez colocada se comprueba el tablero <- se gana o se sigue (mirar 9 comprobaciones) [@Borja]
+	
+	/* Array de 3x3
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 *  [ ] [ ] [ ]
+	 */
+	
 	public void comprobarVictoria() {
+		// mientras no tengamos ganador, comprobaremos todas la combinaciones ganadoras:
+		boolean tenemosGanador = false;
 		
+		// comprobaremos el array con cada una de las combinaciones ganadoras
+
 		
-	}
+		switch(expression) {
+		  case 1: // victoria vertical 1
+			  	/* 
+				 *  [1] [0] [0]
+				 *  [1] [0] [0]
+				 *  [1] [0] [0]
+				 */
+			  
+			  
+		    break;
+		  case 2: // victoria vertical 2
+			  	/* 
+				 *  [0] [1] [0]
+				 *  [0] [1] [0]
+				 *  [0] [1] [0]
+				 */
+			  
+			  
+		    break;
+		  case 3: // victoria vertical 3
+			  	/* 
+				 *  [0] [0] [1]
+				 *  [0] [0] [1]
+				 *  [0] [0] [1]
+				 */
+			  
+			  
+		    break;
+		  case 4: // victoria horizontal 1
+			  	/* 
+				 *  [1] [1] [1]
+				 *  [0] [0] [0]
+				 *  [0] [0] [0]
+				 */
+			  
+			  
+		    break;
+		  case 5: // victoria horizontal 2
+			  	/* 
+				 *  [0] [0] [0]
+				 *  [1] [1] [1]
+				 *  [0] [0] [0]
+				 */
+			  
+			  
+		    break;
+		  case 6: // victoria horizontal 2
+			  	/* 
+				 *  [0] [0] [0]
+				 *  [0] [0] [0]
+				 *  [1] [1] [1]
+				 */
+			  
+			  
+		    break;
+		  case 7: // victoria diagonal 1
+			  	/* 
+				 *  [1] [0] [0]
+				 *  [0] [1] [0]
+				 *  [0] [0] [1]
+				 */
+			  
+			  
+		    break;
+		  case 8: // victoria diagonal 2
+			  	/* 
+				 *  [0] [0] [1]
+				 *  [0] [1] [0]
+				 *  [1] [0] [0]
+				 */
+			  
+			  
+		    break;
+		  default:
+		    // code block
+			  
+		}
 	
 	//FASE 1 colocar las piezas [@eloi]
 	
