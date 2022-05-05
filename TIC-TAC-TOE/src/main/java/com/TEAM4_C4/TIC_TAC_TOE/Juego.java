@@ -153,9 +153,10 @@ public class Juego extends JFrame {
 					btn11.setText("X");
 					//implementar todas las funciones que se suceden durante el turno
 					//meter char en posicion array [@borja]
+					turno();
 					tablero[0][0] = 'X';
 					//else mensaje no se puede colocar
-					turno();
+					
 				}else{
 					btn11.setText("O");
 					//meter char en posicion array [@borja]
@@ -242,7 +243,9 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
+					
 					btn32.setText("X");
+					
 					turno();
 				}else{
 					btn32.setText("O");
