@@ -35,6 +35,8 @@ public class Juego extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
+	 public static JLabel labelNombre1 = new JLabel("");
+	 public static JLabel labelNombre2 = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -51,6 +53,9 @@ public class Juego extends JFrame {
 			}
 		});
 	}
+	
+	
+	
 
 	/**
 	 * Create the frame.
@@ -75,20 +80,13 @@ public class Juego extends JFrame {
 		infoTurno.setBounds(489, 54, 138, 16);
 		contentPane.add(infoTurno);
 		
-		JLabel labelNombreJugador1 = new JLabel("New label");
-		labelNombreJugador1.setBounds(489, 98, 61, 16);
-		contentPane.add(labelNombreJugador1);
 		
-		JLabel labelNombre1 = new JLabel("New label");
+		
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
+	
 		
-		JLabel labelNombreJugador2 = new JLabel("New label");
-		labelNombreJugador2.setBounds(499, 250, 61, 16);
-		contentPane.add(labelNombreJugador2);
-		
-		JLabel labelNombre2 = new JLabel("New label");
-		labelNombre2.setBounds(509, 278, 61, 16);
+		labelNombre2.setBounds(509, 278, 183, 16);
 		contentPane.add(labelNombre2);
 		
 		JPanel panel = new JPanel();
