@@ -35,16 +35,13 @@ import javax.swing.border.LineBorder;
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
-<<<<<<< HEAD
-	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
-	public static JLabel infoTurno = new JLabel("Es el turno de " + "[NombreJugador]");
+	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
 	//Iniciar tablero
 	static char[][] tablero = { {' ',' ',' '}, 
 								{' ',' ',' '}, 
 								{' ',' ',' '}};
-=======
 
 	 public static JLabel labelNombre1 = new JLabel("");
 	 public static JLabel labelNombre2 = new JLabel("");
@@ -55,7 +52,6 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	
->>>>>>> main
 
 	/**
 	 * Launch the application.
@@ -87,13 +83,6 @@ public class Juego extends JFrame {
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.RED, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-<<<<<<< HEAD
-
-=======
-		//Iniciar tablero
-		final char[][] tablero = new char[3][3];
->>>>>>> main
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.addActionListener(new ActionListener() {
@@ -149,14 +138,10 @@ public class Juego extends JFrame {
 		final JToggleButton btn32  =new JToggleButton("");
 		panel.add(btn32);
 		
-<<<<<<< HEAD
 		comprobarVictoria(true);
 		
-		
-=======
 		final JToggleButton btn33 = new JToggleButton("");
 		panel.add(btn33);
->>>>>>> main
 		
 		//LISTENERS
 		btn11.addActionListener(new ActionListener() {
@@ -167,10 +152,14 @@ public class Juego extends JFrame {
 					//if !ocupada
 					btn11.setText("X");
 					//implementar todas las funciones que se suceden durante el turno
+					//meter char en posicion array [@borja]
+					tablero[0][0] = 'X';
 					//else mensaje no se puede colocar
 					turno();
 				}else{
 					btn11.setText("O");
+					//meter char en posicion array [@borja]
+					tablero[0][0] = 'O';
 					turno();
 				}
 			}
@@ -522,7 +511,7 @@ public class Juego extends JFrame {
 	
 	//END FASE 1
 	
-	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 
+	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 [@Eloi]
 	
 	// comprobar ficha si estuya
 	

@@ -48,16 +48,12 @@ public class App extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-		
-		JRadioButton rdbtn1 = new JRadioButton("1 Jugador");
 
 		final JRadioButton rdbtn1 = new JRadioButton("1 Jugador");
 		rdbtn1.setSelected(true);
 		numeroJugadores.add(rdbtn1);
 		rdbtn1.setBounds(89, 84, 109, 23);
 		contentPane.add(rdbtn1);
-		
-		JRadioButton rdbtn2 = new JRadioButton("2 Jugadores");
 
 		final JRadioButton rdbtn2 = new JRadioButton("2 Jugadores");
 		numeroJugadores.add(rdbtn2);
@@ -150,8 +146,6 @@ public class App extends JFrame {
 
 			}
 		});	
-		
-		});
 
 	}
 	
