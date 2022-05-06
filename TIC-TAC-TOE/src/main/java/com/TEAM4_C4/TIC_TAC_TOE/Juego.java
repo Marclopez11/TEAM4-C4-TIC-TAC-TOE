@@ -76,7 +76,7 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 	public Juego() {
-		setTitle("Tic Tac Toe");
+		setTitle("Los treses en la línea [Team 4]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 600, 900, 900);
 		contentPane = new JPanel();
