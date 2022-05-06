@@ -21,6 +21,7 @@ public class App extends JFrame {
 	private final ButtonGroup numeroJugadores = new ButtonGroup();
 	private JTextField tfNombreJ1;
 	private JTextField tfNombreJ2;
+	 private  static  App frame = new App();
 
 	/**
 	 * Launch the application.
@@ -29,7 +30,7 @@ public class App extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App frame = new App();
+					//final App frame = new App();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -118,7 +119,6 @@ public class App extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				//instanciamos la otra pantalla
 				Juego abrir = new Juego();
 				//
@@ -129,12 +129,13 @@ public class App extends JFrame {
 					Juego.labelNombre2.setText("Player CPU");
 					//hacer visible la otra pestaña
 					abrir.setVisible(true);
-				
+					frame.setVisible(false);
 				//	
 				}else if (rdbtn2.isSelected() && !tfNombreJ2.getText().trim().isEmpty() && !tfNombreJ1.getText().trim().isEmpty()) {
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText(tfNombreJ2.getText().trim());
 					abrir.setVisible(true);
+					frame.setVisible(false);
 
 				} else {
 					// Player 1 no tiene valores

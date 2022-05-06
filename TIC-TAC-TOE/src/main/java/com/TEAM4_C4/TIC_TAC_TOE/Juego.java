@@ -32,6 +32,7 @@ public class Juego extends JFrame {
 	static int turno = 0;
 	static boolean octirada = false;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
+private static 					Juego frame = new Juego();
 
 	/**
 	 * Launch the application.
@@ -40,7 +41,7 @@ public class Juego extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Juego frame = new Juego();
+					//Juego frame = new Juego();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,14 +68,16 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				limpiarTablero(tablero);
+				frame.setVisible(false);
 				App abrir = new App();
 				abrir.setVisible(true);
+
 			}
 		});
 		btnNuevaPartida.setBounds(636, 16, 117, 29);
 		contentPane.add(btnNuevaPartida);
 
-		infoTurno.setBounds(489, 54, 138, 16);
+		infoTurno.setBounds(489, 54, 203, 16);
 		contentPane.add(infoTurno);
 
 		labelNombre1.setBounds(499, 137, 61, 16);
@@ -368,11 +371,12 @@ public class Juego extends JFrame {
 	void turno() {
 		// la primera vez se decide por boolean random, true = primer jugador, false
 		// segundo jugador
-		for (int i = 0; i < tablero.length; i++) {
-			for (int j = 0; j < tablero.length; j++) {
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 2; j++) {
 				System.out.println(tablero[i][j]);
 			}
 		}
+		
 		if (jugador) {
 			// implementar todas las funciones que se suceden durante el turno
 			// se suma el turno
