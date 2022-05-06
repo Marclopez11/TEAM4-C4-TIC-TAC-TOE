@@ -21,7 +21,6 @@ public class Juego extends JFrame {
 	private JPanel contentPane;
 
 	// Iniciar tablero
-	static char[][] tablero = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
 	static char[][] tablero = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
 	public static JLabel labelNombre1 = new JLabel("");
@@ -315,7 +314,6 @@ private static 					Juego frame = new Juego();
 						octirada = true;
 						btn32.setText("O");
 						turno();
-						tablero[2][1] = 'X';
 						tablero[2][1] = 'O';
 					}
 				}
@@ -336,7 +334,6 @@ private static 					Juego frame = new Juego();
 						tablero[2][2] = 'X';
 					}
 				} else {
-					while (!octirada) {
 
 						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
 
@@ -345,10 +342,8 @@ private static 					Juego frame = new Juego();
 							octirada = true;
 							btn33.setText("O");
 							turno();
-							tablero[2][2] = 'X';
 							tablero[2][2] = 'O';
 						}
-					}
 					
 
 				}
@@ -388,11 +383,14 @@ private static 					Juego frame = new Juego();
 		
 		// la primera vez se decide por boolean random, true = primer jugador, false
 		// segundo jugador
+<<<<<<< HEAD
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				System.out.println(tablero[i][j]);
 			}
 		}
+=======
+>>>>>>> main
 		
 		if (jugador) {
 			// implementar todas las funciones que se suceden durante el turno
