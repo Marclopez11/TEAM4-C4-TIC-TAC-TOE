@@ -22,6 +22,7 @@ public class Juego extends JFrame {
 
 	// Iniciar tablero
 	static char[][] tablero = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
+	static char[][] tablero = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
 	public static JLabel labelNombre1 = new JLabel("");
 	public static JLabel labelNombre2 = new JLabel("");
@@ -315,6 +316,7 @@ private static 					Juego frame = new Juego();
 						btn32.setText("O");
 						turno();
 						tablero[2][1] = 'X';
+						tablero[2][1] = 'O';
 					}
 				}
 			}
@@ -335,6 +337,7 @@ private static 					Juego frame = new Juego();
 					}
 				} else {
 					while (!octirada) {
+
 						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
 
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -343,8 +346,10 @@ private static 					Juego frame = new Juego();
 							btn33.setText("O");
 							turno();
 							tablero[2][2] = 'X';
+							tablero[2][2] = 'O';
 						}
 					}
+					
 
 				}
 			}
@@ -367,8 +372,20 @@ private static 					Juego frame = new Juego();
 		return r.nextBoolean();
 
 	}
+	
+	void mostrarArray() {
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.print(tablero[i][j]);
+			}
+			System.out.println();
+		}
+	}
 
 	void turno() {
+		
+		mostrarArray();
+		
 		// la primera vez se decide por boolean random, true = primer jugador, false
 		// segundo jugador
 		for (int i = 0; i < 2; i++) {
