@@ -517,6 +517,24 @@ public class Juego extends JFrame {
 	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 [@Eloi]
 	
 	// comprobar ficha si estuya
+	//este método comprueba unicamente si la ficha es tuya
+	boolean moverFicha(String value) {
+		//miramos a que jugador le pertenece
+		if(jugador) {
+			if(value.equals('X')) {
+				return true;
+			}else {	
+				return false;	
+			}
+		}else {
+			if(value.equals('O')) {
+				return true;
+			}else {	
+				return false;	
+			}
+		}
+
+	}
 	
 	//END FASE 2
 	
