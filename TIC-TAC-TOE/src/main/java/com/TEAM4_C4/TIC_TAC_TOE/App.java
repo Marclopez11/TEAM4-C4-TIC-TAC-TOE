@@ -14,6 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Window.Type;
 
 public class App extends JFrame {
 
@@ -43,51 +48,69 @@ public class App extends JFrame {
 	 * Create the frame.
 	 */
 	public App() {
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setBounds(100, 100, 452, 303);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 
-		final JRadioButton rdbtn1 = new JRadioButton("1 Jugador");
+		final JRadioButton rdbtn1 = new JRadioButton("CPU");
+		rdbtn1.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		rdbtn1.setSelected(true);
 		numeroJugadores.add(rdbtn1);
-		rdbtn1.setBounds(89, 84, 109, 23);
+		rdbtn1.setBounds(216, 77, 109, 23);
 		contentPane.add(rdbtn1);
 
-		final JRadioButton rdbtn2 = new JRadioButton("2 Jugadores");
+		final JRadioButton rdbtn2 = new JRadioButton("2 Players");
+		rdbtn2.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		numeroJugadores.add(rdbtn2);
-		rdbtn2.setBounds(200, 84, 109, 23);
+		rdbtn2.setBounds(309, 77, 109, 23);
 		contentPane.add(rdbtn2);
 		
 
-		JLabel lblNewLabel = new JLabel("Nombre Jugador 1");
-		lblNewLabel.setBounds(89, 132, 88, 14);
+		JLabel lblNewLabel = new JLabel("Player 1");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		lblNewLabel.setBounds(216, 135, 86, 14);
 		contentPane.add(lblNewLabel);
 		
 
 		tfNombreJ1 = new JTextField();
-		tfNombreJ1.setBounds(89, 151, 86, 20);
+		tfNombreJ1.setBounds(216, 161, 86, 20);
 		contentPane.add(tfNombreJ1);
 		tfNombreJ1.setColumns(10);
 		
 
-		JLabel lblNewLabel2 = new JLabel("Nombre Jugador 2");
-		lblNewLabel2.setBounds(200, 132, 88, 14);
+		JLabel lblNewLabel2 = new JLabel("Player 2");
+		lblNewLabel2.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		lblNewLabel2.setBounds(330, 135, 88, 14);
 		contentPane.add(lblNewLabel2);
 		
 
 		tfNombreJ2 = new JTextField();
 		tfNombreJ2.setEditable(false);
 		tfNombreJ2.setColumns(10);
-		tfNombreJ2.setBounds(200, 151, 86, 20);
+		tfNombreJ2.setBounds(330, 161, 86, 20);
 		contentPane.add(tfNombreJ2);
 		
 
 		JButton btnStart = new JButton("Iniciar");
-		btnStart.setBounds(140, 195, 89, 23);
+		btnStart.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnStart.setForeground(new Color(51, 204, 153));
+		btnStart.setBackground(Color.WHITE);
+		btnStart.setBounds(263, 210, 99, 31);
 		contentPane.add(btnStart);
+		
+		JLabel titulo = new JLabel("Tres en Línea");
+		titulo.setFont(new Font("Lucida Grande", Font.BOLD, 28));
+		titulo.setBounds(23, 19, 198, 43);
+		contentPane.add(titulo);
+		
+		JLabel img = new JLabel("");
+		img.setIcon(new ImageIcon(App.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/t2vuw-eutu8.png")));
+		img.setBounds(6, 74, 198, 167);
+		contentPane.add(img);
 		
 		//LISTENERS
 
