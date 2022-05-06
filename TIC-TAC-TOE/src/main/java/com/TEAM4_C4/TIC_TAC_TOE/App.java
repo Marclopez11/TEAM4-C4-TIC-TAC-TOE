@@ -21,7 +21,7 @@ public class App extends JFrame {
 	private final ButtonGroup numeroJugadores = new ButtonGroup();
 	private JTextField tfNombreJ1;
 	private JTextField tfNombreJ2;
-	 private  static  App frame = new App();
+	public static App frame = new App();
 
 	/**
 	 * Launch the application.
