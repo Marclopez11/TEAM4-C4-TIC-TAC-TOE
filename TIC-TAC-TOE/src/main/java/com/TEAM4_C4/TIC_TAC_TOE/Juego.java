@@ -77,6 +77,7 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 	public Juego() {
+		setTitle("Los treses en la línea [Team 4]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 600, 900, 900);
 		contentPane = new JPanel();
@@ -203,6 +204,7 @@ public class Juego extends JFrame {
 					}
 					btn12.setText("X");
 					turno();
+					tablero[0][1] = 'X';
 					//else mensaje no se puede colocar
 				}else{
 					while(!octirada) {
@@ -217,6 +219,7 @@ public class Juego extends JFrame {
 					}
 					btn12.setText("O");
 					turno();
+					tablero[0][1] = 'O';
 				}
 			}
 		});
@@ -236,6 +239,7 @@ public class Juego extends JFrame {
 					}
 					btn13.setText("X");
 					turno();
+					tablero[0][2] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn13.getText().equals("O") || btn13.getText().equals("X")){
@@ -249,6 +253,7 @@ public class Juego extends JFrame {
 					}
 					btn13.setText("O");
 					turno();
+					tablero[0][2] = 'O';
 				}
 			}
 		});
@@ -300,6 +305,7 @@ public class Juego extends JFrame {
 					}
 					btn22.setText("X");
 					turno();
+					tablero[1][1] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn22.getText().equals("O") || btn22.getText().equals("X")){
@@ -313,6 +319,7 @@ public class Juego extends JFrame {
 					}
 					btn22.setText("O");
 					turno();
+					tablero[1][1] = 'O';
 				}
 			}
 		});
@@ -332,6 +339,7 @@ public class Juego extends JFrame {
 					}
 					btn23.setText("X");
 					turno();
+					tablero[1][2] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn23.getText().equals("O") || btn23.getText().equals("X")){
@@ -345,6 +353,7 @@ public class Juego extends JFrame {
 					}
 					btn23.setText("O");
 					turno();
+					tablero[1][2] = 'O';
 				}
 			}
 		});
@@ -364,6 +373,7 @@ public class Juego extends JFrame {
 					}
 					btn31.setText("X");
 					turno();
+					tablero[2][0] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn31.getText().equals("O") || btn31.getText().equals("X")){
@@ -377,6 +387,7 @@ public class Juego extends JFrame {
 					}
 					btn31.setText("O");
 					turno();
+					tablero[2][0] = 'O';
 				}
 			}
 		});
@@ -396,8 +407,8 @@ public class Juego extends JFrame {
 					}
 					
 					btn32.setText("X");
-					
 					turno();
+					tablero[2][1] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn32.getText().equals("O") || btn32.getText().equals("X")){
@@ -411,6 +422,7 @@ public class Juego extends JFrame {
 					}
 					btn32.setText("O");
 					turno();
+					tablero[2][1] = 'X';
 				}
 			}
 		});
@@ -430,6 +442,7 @@ public class Juego extends JFrame {
 					}
 					btn33.setText("X");
 					turno();
+					tablero[2][2] = 'X';
 				}else{
 					while(!octirada) {
 						if(btn33.getText().equals("O") || btn33.getText().equals("X")){
@@ -443,6 +456,7 @@ public class Juego extends JFrame {
 					}
 					btn33.setText("O");
 					turno();
+					tablero[2][2] = 'X';
 				}
 			}
 		});
@@ -477,7 +491,11 @@ public class Juego extends JFrame {
 	
 	void turno() {
 		//la primera vez se decide por boolean random, true = primer jugador, false segundo jugador
-		
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero.length; j++) {
+				System.out.println(tablero[i][j]);
+			}
+		}
 		if(jugador) {
 			
 			//implementar todas las funciones que se suceden durante el turno
