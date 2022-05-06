@@ -119,24 +119,30 @@ public class App extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				//instanciamos la otra pantalla
 				Juego abrir = new Juego();
-
+				//
 				if (rdbtn1.isSelected() && !tfNombreJ1.getText().trim().isEmpty()) {
+					
+					//mandamos el valor del nombre a la página juego para mostrar su nombre
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText("Player CPU");
-
+					//hacer visible la otra pestaña
 					abrir.setVisible(true);
+				
+				//	
 				}else if (rdbtn2.isSelected() && !tfNombreJ2.getText().trim().isEmpty() && !tfNombreJ1.getText().trim().isEmpty()) {
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText(tfNombreJ2.getText().trim());
 					abrir.setVisible(true);
 
 				} else {
+					// Player 1 no tiene valores
 					if (tfNombreJ1.getText().trim().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Player 1 Esta vacio ");
 
 					}
+					//Player 2 no tiene valores
 					if (tfNombreJ2.getText().trim().isEmpty() && rdbtn2.isSelected())  {
 						JOptionPane.showMessageDialog(null, "Player 2 Esta vacio ");
 
