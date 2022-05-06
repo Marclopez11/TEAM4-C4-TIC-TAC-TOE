@@ -13,8 +13,16 @@ import java.util.Random;
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
+import javax.swing.border.AbstractBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.JEditorPane;
+import java.awt.SystemColor;
 
 public class Juego extends JFrame {
 
@@ -58,12 +66,18 @@ public class Juego extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 600, 800, 400);
 		contentPane = new JPanel();
-		contentPane.setForeground(Color.DARK_GRAY);
-		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.RED, null, null, null));
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setForeground(new Color(255, 255, 255));
+
+		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JButton btnNuevaPartida = new JButton("Nueva Partida");
+		btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnNuevaPartida.setForeground(new Color(51, 204, 153));
+		
+
 		btnNuevaPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -74,20 +88,26 @@ public class Juego extends JFrame {
 
 			}
 		});
-		btnNuevaPartida.setBounds(636, 16, 117, 29);
+		btnNuevaPartida.setBounds(543, 16, 201, 29);
 		contentPane.add(btnNuevaPartida);
+		infoTurno.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 
 		infoTurno.setBounds(489, 54, 358, 16);
 		contentPane.add(infoTurno);
+		labelNombre1.setFont(new Font("Kohinoor Gujarati", Font.BOLD | Font.ITALIC, 13));
 
 		labelNombre1.setBounds(499, 137, 61, 16);
 		contentPane.add(labelNombre1);
+		labelNombre2.setFont(new Font("Kohinoor Gujarati", Font.BOLD | Font.ITALIC, 13));
 
-		labelNombre2.setBounds(509, 278, 183, 16);
+		labelNombre2.setBounds(520, 137, 183, 16);
 		contentPane.add(labelNombre2);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(18, 26, 440, 325);
+		panel.setBackground(new Color(0, 0, 0));
+		panel.setBounds(18, 16, 440, 335);
+		panel.setBorder(new EmptyBorder(5,5,5,5));
+
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 
@@ -119,6 +139,16 @@ public class Juego extends JFrame {
 
 		final JToggleButton btn33 = new JToggleButton("");
 		panel.add(btn33);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(0, 0, 0));
+		panel_1.setBounds(470, 0, 3, 384);
+		contentPane.add(panel_1);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
+		lblNewLabel.setBounds(0, -22, 471, 394);
+		contentPane.add(lblNewLabel);
 
 		// LISTENERS
 		btn11.addActionListener(new ActionListener() {
@@ -930,10 +960,4 @@ public class Juego extends JFrame {
 		}
 
 	}
-	
-	//END FASE 2
-	
-	
-	
-	
 }
