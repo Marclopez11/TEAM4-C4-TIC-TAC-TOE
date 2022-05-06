@@ -1,43 +1,24 @@
 package com.TEAM4_C4.TIC_TAC_TOE;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import javax.swing.JToggleButton;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
-import javax.swing.JTree;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JSplitPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JProgressBar;
-import javax.swing.JTextField;
-import java.awt.Label;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.SoftBevelBorder;
+
 import javax.swing.border.BevelBorder;
-import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
 
 public class Juego extends JFrame {
 
 	private JPanel contentPane;
-	
-	private final ButtonGroup buttonGroupTipo1 = new ButtonGroup();
 	
 	//Iniciar tablero
 	static char[][] tablero = { {' ',' ',' '}, 
@@ -153,19 +134,19 @@ public class Juego extends JFrame {
 				//TODO COMENTAR
 				if(jugador) {
 					//if !ocupada
-					octirada = false;
-					while(!octirada) {
+					
+	
 						if(btn11.getText().equals("O") || btn11.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 						}else {
-							octirada = true;
+							
 								btn11.setText("X");
 								turno();
 								tablero[0][0] = 'X';
 							}
-					}
+					
 					
 					//implementar todas las funciones que se suceden durante el turno
 					//meter char en posicion array [@borja]
@@ -174,13 +155,13 @@ public class Juego extends JFrame {
 					
 				}else{
 					octirada = false;
-					while(!octirada) {
+					
 						if(btn11.getText().equals("O") || btn11.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 							}else {
-								octirada = true;
+								
 								btn11.setText("O");
 								//meter char en posicion array [@borja]
 								tablero[0][0] = 'O';
@@ -189,45 +170,44 @@ public class Juego extends JFrame {
 							}
 					}
 					
-				}
+				
 			}
 		});
 		btn12.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					octirada = false;
 
-					while(!octirada) {
+					
 						if(btn12.getText().equals("O") || btn12.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 							}else {
-								octirada = true;
+								
 								btn12.setText("X");
 								turno();
 								tablero[0][1] = 'X';
 								//else mensaje no se puede colocar
 							}
-					}
+					
 					
 				}else{
 					octirada = false;
 
-					while(!octirada) {
+					
 						
 						if(btn12.getText().equals("O") || btn12.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 							}else {
-								octirada = true;
+								
 								btn12.setText("O");
 								turno();
 								tablero[0][1] = 'O';
 							}
-					}
+					
 				
 				}
 			}
@@ -236,9 +216,9 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					octirada = false;
+					
 
-					while(!octirada) {
+					
 						if(btn13.getText().equals("O") || btn13.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -250,12 +230,12 @@ public class Juego extends JFrame {
 								tablero[0][2] = 'X';
 								
 							}
-					}
+					
 					
 				}else{
-					octirada = false;
+					
 
-					while(!octirada) {
+					
 						if(btn13.getText().equals("O") || btn13.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -267,7 +247,7 @@ public class Juego extends JFrame {
 								tablero[0][2] = 'O';
 								
 							}
-					}
+					
 				
 				}
 			}
@@ -276,7 +256,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn21.getText().equals("O") || btn21.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -289,10 +269,11 @@ public class Juego extends JFrame {
 
 								
 							}
-					}
+					
 				
 				}else{
-					while(!octirada) {
+					
+						
 						if(btn21.getText().equals("O") || btn21.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -305,14 +286,14 @@ public class Juego extends JFrame {
 							}
 					}
 					
-				}
+				
 			}
 		});
 		btn22.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn22.getText().equals("O") || btn22.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -321,12 +302,12 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn22.setText("X");
 					turno();
 					tablero[1][1] = 'X';
 				}else{
-					while(!octirada) {
+					
 						if(btn22.getText().equals("O") || btn22.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -335,7 +316,7 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn22.setText("O");
 					turno();
 					tablero[1][1] = 'O';
@@ -346,7 +327,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn23.getText().equals("O") || btn23.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -355,12 +336,12 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn23.setText("X");
 					turno();
 					tablero[1][2] = 'X';
 				}else{
-					while(!octirada) {
+					
 						if(btn23.getText().equals("O") || btn23.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -369,7 +350,7 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn23.setText("O");
 					turno();
 					tablero[1][2] = 'O';
@@ -380,7 +361,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn31.getText().equals("O") || btn31.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -389,12 +370,12 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn31.setText("X");
 					turno();
 					tablero[2][0] = 'X';
 				}else{
-					while(!octirada) {
+					
 						if(btn31.getText().equals("O") || btn31.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -403,7 +384,7 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn31.setText("O");
 					turno();
 					tablero[2][0] = 'O';
@@ -414,7 +395,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn32.getText().equals("O") || btn32.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -423,13 +404,13 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					
 					btn32.setText("X");
 					turno();
 					tablero[2][1] = 'X';
 				}else{
-					while(!octirada) {
+					
 						if(btn32.getText().equals("O") || btn32.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -438,7 +419,7 @@ public class Juego extends JFrame {
 								octirada = true;
 								
 							}
-					}
+					
 					btn32.setText("O");
 					turno();
 					tablero[2][1] = 'X';
@@ -449,19 +430,19 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
-					while(!octirada) {
+					
 						if(btn33.getText().equals("O") || btn33.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 							}else {
 								octirada = true;
-								
+								btn33.setText("X");
+								turno();
+								tablero[2][2] = 'X';
 							}
-					}
-					btn33.setText("X");
-					turno();
-					tablero[2][2] = 'X';
+					
+					
 				}else{
 					while(!octirada) {
 						if(btn33.getText().equals("O") || btn33.getText().equals("X")){
@@ -470,12 +451,12 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
-								
+								btn33.setText("O");
+								turno();
+								tablero[2][2] = 'X';
 							}
 					}
-					btn33.setText("O");
-					turno();
-					tablero[2][2] = 'X';
+					
 				}
 			}
 		});
