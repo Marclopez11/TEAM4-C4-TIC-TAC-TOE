@@ -19,6 +19,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JTree;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JProgressBar;
@@ -152,25 +153,27 @@ public class Juego extends JFrame {
 				//TODO COMENTAR
 				if(jugador) {
 					//if !ocupada
+					octirada = false;
 					while(!octirada) {
 						if(btn11.getText().equals("O") || btn11.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
-							}else {
-								octirada = true;
+						}else {
+							octirada = true;
 								btn11.setText("X");
-								
+								turno();
+								tablero[0][0] = 'X';
 							}
 					}
 					
 					//implementar todas las funciones que se suceden durante el turno
 					//meter char en posicion array [@borja]
-					turno();
-					tablero[0][0] = 'X';
+					
 					//else mensaje no se puede colocar
 					
 				}else{
+					octirada = false;
 					while(!octirada) {
 						if(btn11.getText().equals("O") || btn11.getText().equals("X")){
 							
@@ -178,13 +181,14 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
+								btn11.setText("O");
+								//meter char en posicion array [@borja]
+								tablero[0][0] = 'O';
+								turno();
 								
 							}
 					}
-					btn11.setText("O");
-					//meter char en posicion array [@borja]
-					tablero[0][0] = 'O';
-					turno();
+					
 				}
 			}
 		});
@@ -192,6 +196,8 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
+					octirada = false;
+
 					while(!octirada) {
 						if(btn12.getText().equals("O") || btn12.getText().equals("X")){
 							
@@ -199,27 +205,30 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
-								
+								btn12.setText("X");
+								turno();
+								tablero[0][1] = 'X';
+								//else mensaje no se puede colocar
 							}
 					}
-					btn12.setText("X");
-					turno();
-					tablero[0][1] = 'X';
-					//else mensaje no se puede colocar
+					
 				}else{
+					octirada = false;
+
 					while(!octirada) {
+						
 						if(btn12.getText().equals("O") || btn12.getText().equals("X")){
 							
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 							
 							}else {
 								octirada = true;
-								
+								btn12.setText("O");
+								turno();
+								tablero[0][1] = 'O';
 							}
 					}
-					btn12.setText("O");
-					turno();
-					tablero[0][1] = 'O';
+				
 				}
 			}
 		});
@@ -227,6 +236,8 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(jugador) {
+					octirada = false;
+
 					while(!octirada) {
 						if(btn13.getText().equals("O") || btn13.getText().equals("X")){
 							
@@ -234,13 +245,16 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
+								btn13.setText("X");
+								turno();
+								tablero[0][2] = 'X';
 								
 							}
 					}
-					btn13.setText("X");
-					turno();
-					tablero[0][2] = 'X';
+					
 				}else{
+					octirada = false;
+
 					while(!octirada) {
 						if(btn13.getText().equals("O") || btn13.getText().equals("X")){
 							
@@ -248,12 +262,13 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
+								btn13.setText("O");
+								turno();
+								tablero[0][2] = 'O';
 								
 							}
 					}
-					btn13.setText("O");
-					turno();
-					tablero[0][2] = 'O';
+				
 				}
 			}
 		});
@@ -268,11 +283,14 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
+								btn21.setText("X");
+								turno();
+								tablero[1][0] = 'X';
+
 								
 							}
 					}
-					btn21.setText("X");
-					turno();
+				
 				}else{
 					while(!octirada) {
 						if(btn21.getText().equals("O") || btn21.getText().equals("X")){
@@ -281,11 +299,12 @@ public class Juego extends JFrame {
 							
 							}else {
 								octirada = true;
-								
+								btn21.setText("O");
+								turno();
+								tablero[1][0] = 'O';
 							}
 					}
-					btn21.setText("O");
-					turno();
+					
 				}
 			}
 		});
