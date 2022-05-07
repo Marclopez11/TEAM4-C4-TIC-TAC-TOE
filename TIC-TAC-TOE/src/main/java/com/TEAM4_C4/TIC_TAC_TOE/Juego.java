@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JEditorPane;
 import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class Juego extends JFrame {
 
@@ -33,6 +34,7 @@ public class Juego extends JFrame {
 
 	public static JLabel labelNombre1 = new JLabel("");
 	public static JLabel labelNombre2 = new JLabel("");
+
 
 	// este boolean determina quien empieza la partida:
 	static boolean jugador = primerTurno();
@@ -75,36 +77,10 @@ public class Juego extends JFrame {
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		labelNombre1.setFont(new Font("Palatino", Font.BOLD, 13));
 
-		JButton btnNuevaPartida = new JButton("Nueva Partida");
-		btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnNuevaPartida.setForeground(new Color(51, 204, 153));
-		
-
-		btnNuevaPartida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				limpiarTablero(tablero);
-				juego.setVisible(false);
-				App abrir = new App();
-				abrir.setVisible(true);
-
-			}
-		});
-		btnNuevaPartida.setBounds(543, 16, 201, 29);
-		contentPane.add(btnNuevaPartida);
-		infoTurno.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-
-		infoTurno.setBounds(489, 54, 358, 16);
-		contentPane.add(infoTurno);
-		labelNombre1.setFont(new Font("Kohinoor Gujarati", Font.BOLD | Font.ITALIC, 13));
-
-		labelNombre1.setBounds(499, 137, 61, 16);
+		labelNombre1.setBounds(485, 117, 314, 16);
 		contentPane.add(labelNombre1);
-		labelNombre2.setFont(new Font("Kohinoor Gujarati", Font.BOLD | Font.ITALIC, 13));
-
-		labelNombre2.setBounds(520, 137, 183, 16);
-		contentPane.add(labelNombre2);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0));
@@ -135,13 +111,95 @@ public class Juego extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
-		panel_1.setBounds(470, 0, 3, 384);
+		panel_1.setBounds(470, 49, 3, 223);
 		contentPane.add(panel_1);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
 		lblNewLabel.setBounds(0, -22, 471, 394);
 		contentPane.add(lblNewLabel);
+		
+				JButton btnNuevaPartida = new JButton("Nueva Partida");
+				btnNuevaPartida.setBackground(new Color(255, 255, 255));
+				btnNuevaPartida.setBounds(543, 4, 181, 36);
+				contentPane.add(btnNuevaPartida);
+				btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+				btnNuevaPartida.setForeground(new Color(0, 0, 0));
+				infoTurno.setBounds(568, 290, 134, 16);
+				contentPane.add(infoTurno);
+				infoTurno.setFont(new Font("New Peninim MT", Font.BOLD, 15));
+				
+				JLabel lblNewLabel_1 = new JLabel("New label");
+				lblNewLabel_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
+				lblNewLabel_1.setBounds(464, 272, 334, 46);
+				contentPane.add(lblNewLabel_1);
+				
+				JLabel lblNewLabel_1_1 = new JLabel("New label");
+				lblNewLabel_1_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
+				lblNewLabel_1_1.setBounds(470, 0, 328, 49);
+				contentPane.add(lblNewLabel_1_1);
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+				panel_2.setBackground(new Color(0, 0, 0));
+				panel_2.setBounds(470, 269, 330, 3);
+				contentPane.add(panel_2);
+				
+				JPanel panel_2_1 = new JPanel();
+				panel_2_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+				panel_2_1.setBackground(Color.BLACK);
+				panel_2_1.setBounds(470, 318, 330, 3);
+				contentPane.add(panel_2_1);
+				
+				JPanel panel_2_1_1 = new JPanel();
+				panel_2_1_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+				panel_2_1_1.setBackground(Color.BLACK);
+				panel_2_1_1.setBounds(470, 49, 330, 3);
+				contentPane.add(panel_2_1_1);
+				
+				JPanel panel_1_1 = new JPanel();
+				panel_1_1.setBackground(Color.BLACK);
+				panel_1_1.setBounds(470, 318, 3, 54);
+				contentPane.add(panel_1_1);
+				
+				JPanel panel_1_2 = new JPanel();
+				panel_1_2.setBackground(Color.BLACK);
+				panel_1_2.setBounds(797, 0, 2, 372);
+				contentPane.add(panel_1_2);
+				
+				JLabel lblPlayer = new JLabel("PLAYER 1");
+				lblPlayer.setFont(new Font("Tahoma", Font.BOLD, 16));
+				lblPlayer.setBounds(485, 77, 128, 16);
+				contentPane.add(lblPlayer);
+				
+				JLabel lblPlayer_2 = new JLabel("PLAYER 2");
+				lblPlayer_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+				lblPlayer_2.setBounds(485, 167, 128, 16);
+				contentPane.add(lblPlayer_2);
+				
+				labelNombre2.setFont(new Font("Palatino", Font.BOLD, 13));
+				labelNombre2.setBounds(485, 207, 314, 16);
+				contentPane.add(labelNombre2);
+				
+				JPanel panel_2_1_2 = new JPanel();
+				panel_2_1_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+				panel_2_1_2.setBackground(Color.BLACK);
+				panel_2_1_2.setBounds(470, 369, 330, 3);
+				contentPane.add(panel_2_1_2);
+				
+				
+				
+
+				btnNuevaPartida.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+
+						limpiarTablero(tablero);
+						juego.setVisible(false);
+						App abrir = new App();
+						abrir.setVisible(true);
+
+					}
+				});
 
 		// LISTENERS
 		btn11.addActionListener(new ActionListener() {
@@ -701,5 +759,4 @@ public class Juego extends JFrame {
 				// }
 
 		}
-
 	}
