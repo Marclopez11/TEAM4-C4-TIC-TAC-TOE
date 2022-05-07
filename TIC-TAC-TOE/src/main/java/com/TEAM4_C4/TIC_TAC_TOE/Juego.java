@@ -157,8 +157,7 @@ public class Juego extends JFrame {
 				// TODO COMENTAR
 				if (jugador) {
 					
-				if (turno < 3) {
-
+				  
 						if (btn11.getText().equals("O") || btn11.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -166,22 +165,14 @@ public class Juego extends JFrame {
 							turno();
 							tablero[0][0] = 'X';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn11.getText().equals("X")) {
 							btn11.setText("-");
 							tablero[0][0] = '-';
-							
-							if(btn11.getText().equals("O") || btn11.getText().equals("X")) {
-								infoTurno.setText("Casilla Ocupada, marca otra casilla");
-
-							}else {
-								btn11.setText("X");
-								tablero[0][0] = 'X';
-								turno();
-							}
+							turno--;
 
 						} 
 
@@ -199,18 +190,14 @@ public class Juego extends JFrame {
 						}
 					 
 					
-					if(turno >= 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn11.getText().equals("O")) {
 							btn11.setText("-");
 							tablero[0][0] = '-';
+							turno--;
 
-						} else if (btn11.getText().equals("O") || btn11.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn11.setText("O");
-							tablero[0][0] = 'O';
-							turno();
+
 						}
 
 					}
@@ -233,23 +220,18 @@ public class Juego extends JFrame {
 						}
 					
 					
-					if(turno >= 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn12.getText().equals("X")) {
 							btn12.setText("-");
 							tablero[0][1] = '-';
+							turno--;
 
-						} else if (btn12.getText().equals("O") || btn12.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn12.setText("X");
-							tablero[0][1] = 'X';
-							turno();
-						}
+						} 
 
 					}
 				} else {
-					if (turno < 3) {
+					
 						if (btn12.getText().equals("O") || btn12.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -257,21 +239,16 @@ public class Juego extends JFrame {
 							turno();
 							tablero[0][1] = 'O';
 						}
-					} 
+					 
 					
-					if(turno >= 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn12.getText().equals("O")) {
 							btn12.setText("-");
 							tablero[0][1] = '-';
+							turno--;
 
-						} else if (btn12.getText().equals("O") || btn12.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn12.setText("O");
-							tablero[0][1] = 'O';
-							turno();
-						}
+						} 
 
 					}
 				}
@@ -281,7 +258,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno < 3) {
+					
 
 						if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -290,25 +267,21 @@ public class Juego extends JFrame {
 							turno();
 							tablero[0][2] = 'X';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn13.getText().equals("X")) {
 							btn13.setText("-");
 							tablero[0][2] = '-';
+							turno--;
 
-						} else if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn13.setText("X");
-							tablero[0][2] = 'X';
-							turno();
-						}
+
+						} 
 
 					}
 				} else {
-					if (turno < 3) {
+					
 						if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -316,21 +289,16 @@ public class Juego extends JFrame {
 							turno();
 							tablero[0][2] = 'O';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn13.getText().equals("O")) {
 							btn13.setText("-");
 							tablero[0][2] = '-';
+							turno--;
 
-						} else if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn13.setText("O");
-							tablero[0][2] = 'O';
-							turno();
-						}
+						} 
 
 					}
 				}
@@ -340,7 +308,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno < 3) {
+					
 
 						if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -349,25 +317,20 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][0] = 'X';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn21.getText().equals("X")) {
 							btn21.setText("-");
 							tablero[1][0] = '-';
+							turno--;
 
-						} else if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn21.setText("X");
-							tablero[1][0] = 'X';
-							turno();
 						}
 
 					}
 				} else {
-					if (turno < 3) {
+					
 						if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -375,20 +338,15 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][0] = 'O';
 						}
-					} 
+					 
 					
-					if(turno >= 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn21.getText().equals("O")) {
 							btn21.setText("-");
 							tablero[1][0] = '-';
+							turno--;
 
-						} else if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn21.setText("O");
-							tablero[1][0] = 'O';
-							turno();
 						}
 
 					}
@@ -399,7 +357,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno < 3) {
+					
 
 						if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -408,27 +366,23 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][1] = 'X';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn22.getText().equals("X")) {
 							btn22.setText("-");
 							tablero[1][1] = '-';
+							turno--;
 
-						} else if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn22.setText("X");
-							tablero[1][1] = 'X';
-							turno();
-						}
+
+						} 
 
 					}
 
 				} else {
 
-					if (turno < 3) {
+					
 						if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -436,21 +390,16 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][1] = 'O';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn22.getText().equals("O")) {
 							btn22.setText("-");
 							tablero[1][1] = '-';
+							turno--;
 
-						} else if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn22.setText("O");
-							tablero[1][1] = 'O';
-							turno();
-						}
+						} 
 
 					}
 				}
@@ -460,7 +409,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno < 3) {
+					
 
 						if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -469,25 +418,20 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][2] = 'X';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn23.getText().equals("X")) {
 							btn23.setText("-");
 							tablero[1][2] = '-';
+							turno--;
 
-						} else if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn23.setText("X");
-							tablero[1][2] = 'X';
-							turno();
-						}
+						} 
 
 					}
 				} else {
-					if (turno < 3) {
+					
 						if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -495,20 +439,15 @@ public class Juego extends JFrame {
 							turno();
 							tablero[1][2] = 'O';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn23.getText().equals("O")) {
 							btn23.setText("-");
 							tablero[1][2] = '-';
+							turno--;
 
-						} else if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn23.setText("O");
-							tablero[1][2] = 'O';
-							turno();
 						}
 
 					}
@@ -519,7 +458,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno < 3) {
+					
 
 						if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -528,25 +467,20 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][0] = 'X';
 						}
-					} 
+					 
 					
-					if(turno >= 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn31.getText().equals("X")) {
 							btn31.setText("-");
 							tablero[2][0] = '-';
+							turno--;
 
-						} else if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn31.setText("X");
-							tablero[2][0] = 'X';
-							turno();
-						}
+						} 
 
 					}
 				} else {
-					if (turno < 3) {
+					
 						if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -554,22 +488,16 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][0] = 'O';
 						}
-					} 
 					
-					if(turno >= 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn31.getText().equals("O")) {
 							btn31.setText("-");
 							tablero[2][0] = '-';
+							turno--;
 
-						} else if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn31.setText("O");
-							tablero[2][0] = 'O';
-							turno();
-						}
-
+						} 
 					}
 				}
 			}
@@ -578,7 +506,7 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 3) {
+					
 
 						if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -587,25 +515,20 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][1] = 'X';
 						}
-					} 
 					
-					if(turno > 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn32.getText().equals("X")) {
 							btn32.setText("-");
 							tablero[2][1] = '-';
+							turno--;
 
-						} else if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn32.setText("X");
-							tablero[2][1] = 'X';
-							turno();
-						}
+						} 
 
 					}
 				} else {
-					if (turno <= 3) {
+					
 						if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -613,21 +536,16 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][1] = 'O';
 						}
-					} 
 					
-					if(turno > 3){
+					
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn32.getText().equals("O")) {
 							btn32.setText("-");
 							tablero[2][1] = '-';
+							turno--;
 
-						} else if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn32.setText("O");
-							tablero[2][1] = 'O';
-							turno();
-						}
+						} 
 
 					}
 				}
@@ -638,7 +556,7 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
 
-					if (turno <= 3) {
+				
 
 						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
@@ -647,26 +565,22 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][2] = 'X';
 						}
-					} 
 					
-					if(turno >3){
+					
+					if(turno >=4){
 						// fasse2 >5
 						if (btn33.getText().equals("X")) {
 							btn33.setText("-");
 							tablero[2][2] = '-';
+							turno--;
 
-						} else if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn33.setText("X");
-							tablero[2][2] = 'X';
-							turno();
-						}
+
+						} 
 
 					}
 				} else {
 
-					if (turno <= 3) {
+					
 						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
 							infoTurno.setText("Casilla Ocupada, marca otra casilla");
 						} else {
@@ -674,21 +588,17 @@ public class Juego extends JFrame {
 							turno();
 							tablero[2][2] = 'O';
 						}
-					} 
+					 
 					
-					if(turno > 3){
+					if(turno >= 4){
 						// fasse2 >5
 						if (btn33.getText().equals("O")) {
 							btn33.setText("-");
 							tablero[2][2] = '-';
+							turno--;
 
-						} else if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn33.setText("O");
-							tablero[2][2] = 'O';
-							turno();
-						}
+
+						} 
 
 					}
 					
