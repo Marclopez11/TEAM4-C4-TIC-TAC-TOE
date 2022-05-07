@@ -29,7 +29,7 @@ public class Juego extends JFrame {
 	private JPanel contentPane;
 
 	// Iniciar tablero
-	static char[][] tablero = { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+	static char[][] tablero = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
 
 	public static JLabel labelNombre1 = new JLabel("");
 	public static JLabel labelNombre2 = new JLabel("");
@@ -41,6 +41,9 @@ public class Juego extends JFrame {
 	static boolean octirada = false;
 	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
 	public  static 	Juego juego = new Juego();
+	
+	//esta variable nos indica una vez llegada la fase 2, si el usuario ya ha quitado una ficha que quiere mover
+	public static boolean haCambiado = false;
 
 	/**
 	 * Launch the application.
@@ -111,33 +114,31 @@ public class Juego extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 
-		final JToggleButton btn11 = new JToggleButton("");
+		final JToggleButton btn11 = new JToggleButton(" ");
 		panel.add(btn11);
 
-		final JToggleButton btn12 = new JToggleButton("");
+		final JToggleButton btn12 = new JToggleButton(" ");
 		panel.add(btn12);
 
-		final JToggleButton btn13 = new JToggleButton("");
+		final JToggleButton btn13 = new JToggleButton(" ");
 		panel.add(btn13);
 
-		final JToggleButton btn21 = new JToggleButton("");
+		final JToggleButton btn21 = new JToggleButton(" ");
 		panel.add(btn21);
 
-		final JToggleButton btn22 = new JToggleButton("");
+		final JToggleButton btn22 = new JToggleButton(" ");
 		panel.add(btn22);
 
-		final JToggleButton btn23 = new JToggleButton("");
+		final JToggleButton btn23 = new JToggleButton(" ");
 		panel.add(btn23);
 
-		final JToggleButton btn31 = new JToggleButton("");
+		final JToggleButton btn31 = new JToggleButton(" ");
 		panel.add(btn31);
 
-		final JToggleButton btn32 = new JToggleButton("");
+		final JToggleButton btn32 = new JToggleButton(" ");
 		panel.add(btn32);
 
-		comprobarVictoria(true);
-
-		final JToggleButton btn33 = new JToggleButton("");
+		final JToggleButton btn33 = new JToggleButton(" ");
 		panel.add(btn33);
 		
 		JPanel panel_1 = new JPanel();
@@ -154,28 +155,40 @@ public class Juego extends JFrame {
 		btn11.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO COMENTAR
+				// DONE COMENTAR
 				if (jugador) {
 					
-				  
-						if (btn11.getText().equals("O") || btn11.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn11.setText("X");
-							turno();
-							tablero[0][0] = 'X';
-						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn11.getText().equals("X")) {
-							btn11.setText("-");
-							tablero[0][0] = '-';
-							turno--;
+					fase1(btn11);
+						
+					if(turno > 6){ //FASE 2 - PARTE 1 si el turno es mayor que 6 | fase2();
+						
+						if (btn11.getText().equals("X") && !haCambiado) { //tenemos que mirar que la ficha se pueda reemplazar y no se haya reemplazado otra antes
+							btn11.setText(" "); //"reseteamos" la casilla
+							tablero[0][0] = ' '; 
+							
+							//todavia estoy en mi turno
+							
+							//activamos el bool fase 2
+							haCambiado = true;
+							}else if (btn11.getText().equals("O")) {
+								infoTurno.setText("Casilla no es tuya, marca otra casilla");
+							}else {
+								infoTurno.setText("Casilla esta vacia, marca otra casilla");
+							}
 
-						} 
-
+					}
+					
+					if(turno > 6 && btn11.getText().equals(" ") && haCambiado) { //FASE 2 PARTE 2 si selecciona un espacio
+						
+						//pintar la marca en esa casilla
+						btn11.setText("X");
+						//pintamos tambien el tablero
+						tablero[0][0] = 'X'; 
+						//pasar turno
+						turno();
+						
+					}else {
+						infoTurno.setText("Selecciona un espacio");
 					}
 
 				} else {
@@ -625,7 +638,7 @@ public class Juego extends JFrame {
 
 	}
 	
-	void mostrarArray() {
+	static void mostrarArray() {
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
 				System.out.print(tablero[i][j]);
@@ -634,7 +647,7 @@ public class Juego extends JFrame {
 		}
 	}
 
-	void turno() {
+	static void turno() {
 		
 		mostrarArray();
 		
@@ -870,4 +883,17 @@ public class Juego extends JFrame {
 		}
 
 	}
+	
+	static void fase1(JToggleButton btn) {
+		
+		if(turno <= 6 && btn.getText().equals("O") || btn.getText().equals("X")) { //SI ES TURNO 6 O LA CASILLA ESTA OCUPADA
+			infoTurno.setText("Casilla Ocupada, marca otra casilla");  //INFORMA AL USUARIO
+		} else { // SI NO ESTA OCUPADA y el turno es menor o igual a 6
+			btn.setText("X"); //TE METE UNA X
+			turno(); //PASA TURNO
+			tablero[0][0] = 'X'; //LA METE EN TABLERO 
+		}
+		
+	}
+	
 }
