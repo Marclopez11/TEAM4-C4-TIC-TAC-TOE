@@ -116,28 +116,20 @@ public class Juego extends JFrame {
 
 		final JToggleButton btn11 = new JToggleButton(" ");
 		panel.add(btn11);
-
 		final JToggleButton btn12 = new JToggleButton(" ");
 		panel.add(btn12);
-
 		final JToggleButton btn13 = new JToggleButton(" ");
 		panel.add(btn13);
-
 		final JToggleButton btn21 = new JToggleButton(" ");
 		panel.add(btn21);
-
 		final JToggleButton btn22 = new JToggleButton(" ");
 		panel.add(btn22);
-
 		final JToggleButton btn23 = new JToggleButton(" ");
 		panel.add(btn23);
-
 		final JToggleButton btn31 = new JToggleButton(" ");
 		panel.add(btn31);
-
 		final JToggleButton btn32 = new JToggleButton(" ");
 		panel.add(btn32);
-
 		final JToggleButton btn33 = new JToggleButton(" ");
 		panel.add(btn33);
 		
@@ -157,64 +149,25 @@ public class Juego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// DONE COMENTAR
 				if (jugador) {
-					
-					fase1(btn11);
-						
-					if(turno > 6){ //FASE 2 - PARTE 1 si el turno es mayor que 6 | fase2();
-						
-						if (btn11.getText().equals("X") && !haCambiado) { //tenemos que mirar que la ficha se pueda reemplazar y no se haya reemplazado otra antes
-							btn11.setText(" "); //"reseteamos" la casilla
-							tablero[0][0] = ' '; 
-							
-							//todavia estoy en mi turno
-							
-							//activamos el bool fase 2
-							haCambiado = true;
-							}else if (btn11.getText().equals("O")) {
-								infoTurno.setText("Casilla no es tuya, marca otra casilla");
-							}else {
-								infoTurno.setText("Casilla esta vacia, marca otra casilla");
-							}
-
+					if (turno <= 5) { // Si el turno es menor o igual a 5 estara haciendo la fase 1
+						fase1(btn11, "X", 0, 0);
+					} else {
+						if (!haCambiado) { // si no a cambiado la pieza ejecuta para cambiala
+							fase2(btn11, "X", 0, 0);
+						} else { // si a a cambiado selecciona para cambiarla
+							fase21(btn11, "X", 0, 0);
+						}
 					}
-					
-					if(turno > 6 && btn11.getText().equals(" ") && haCambiado) { //FASE 2 PARTE 2 si selecciona un espacio
-						
-						//pintar la marca en esa casilla
-						btn11.setText("X");
-						//pintamos tambien el tablero
-						tablero[0][0] = 'X'; 
-						//pasar turno
-						turno();
-						
-					}else {
-						infoTurno.setText("Selecciona un espacio");
-					}
-
 				} else {
-
-					
-						if (btn11.getText().equals("O") || btn11.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn11.setText("O");
-							turno();
-							tablero[0][0] = 'O';
+					if (turno <= 5) { // Si el turno es menor o igual a 5 estara haciendo la fase 1
+						fase1(btn11, "O", 0, 0);
+					} else {
+						if (!haCambiado) { // si no a cambiado la pieza ejecuta para cambiala
+							fase2(btn11, "O", 0, 0);
+						} else { // si a a cambiado selecciona para cambiarla
+							fase21(btn11, "O", 0, 0);
 						}
-					 
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn11.getText().equals("O")) {
-							btn11.setText("-");
-							tablero[0][0] = '-';
-							turno--;
-
-
-						}
-
 					}
-
 				}
 			}
 		});
@@ -222,47 +175,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn12.getText().equals("O") || btn12.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn12.setText("X");
-							turno();
-							tablero[0][1] = 'X';
+					if (turno <= 5) {
+						fase1(btn12, "X", 0, 1);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn12, "X", 0, 1);
+						} else { 
+							fase21(btn12, "X", 0, 1);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn12.getText().equals("X")) {
-							btn12.setText("-");
-							tablero[0][1] = '-';
-							turno--;
-
-						} 
-
 					}
 				} else {
-					
-						if (btn12.getText().equals("O") || btn12.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn12.setText("O");
-							turno();
-							tablero[0][1] = 'O';
+					if (turno <= 5) { 
+						fase1(btn12, "O", 0, 1);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn12, "O", 0, 1);
+						} else { 
+							fase21(btn12, "O", 0, 1);
 						}
-					 
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn12.getText().equals("O")) {
-							btn12.setText("-");
-							tablero[0][1] = '-';
-							turno--;
-
-						} 
-
 					}
 				}
 			}
@@ -271,48 +201,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn13.setText("X");
-							turno();
-							tablero[0][2] = 'X';
+					if (turno <= 5) { 
+						fase1(btn13, "X", 0, 2);
+					} else {
+						if (!haCambiado) {
+							fase2(btn13, "X", 0, 2);
+						} else { 
+							fase21(btn13, "X", 0, 2);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn13.getText().equals("X")) {
-							btn13.setText("-");
-							tablero[0][2] = '-';
-							turno--;
-
-
-						} 
-
 					}
 				} else {
-					
-						if (btn13.getText().equals("O") || btn13.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn13.setText("O");
-							turno();
-							tablero[0][2] = 'O';
+					if (turno <= 5) { 
+						fase1(btn13, "O", 0, 2);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn13, "O", 0, 2);
+						} else { 
+							fase21(btn13, "O", 0, 2);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn13.getText().equals("O")) {
-							btn13.setText("-");
-							tablero[0][2] = '-';
-							turno--;
-
-						} 
-
 					}
 				}
 			}
@@ -321,47 +227,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
+					if (turno <= 5) { 
+						fase1(btn21, "X", 1, 0);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn21, "X", 1, 0);
 						} else {
-							btn21.setText("X");
-							turno();
-							tablero[1][0] = 'X';
+							fase21(btn21, "X", 1, 0);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn21.getText().equals("X")) {
-							btn21.setText("-");
-							tablero[1][0] = '-';
-							turno--;
-
-						}
-
 					}
 				} else {
-					
-						if (btn21.getText().equals("O") || btn21.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn21.setText("O");
-							turno();
-							tablero[1][0] = 'O';
+					if (turno <= 5) { 
+						fase1(btn21, "O", 1, 0);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn21, "O", 1, 0);
+						} else { 
+							fase21(btn21, "O", 1, 0);
 						}
-					 
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn21.getText().equals("O")) {
-							btn21.setText("-");
-							tablero[1][0] = '-';
-							turno--;
-
-						}
-
 					}
 				}
 			}
@@ -370,50 +253,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn22.setText("X");
-							turno();
-							tablero[1][1] = 'X';
+					if (turno <= 5) { 
+						fase1(btn22, "X", 1, 1);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn22, "X", 1, 1);
+						} else { 
+							fase21(btn22, "X", 1, 1);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn22.getText().equals("X")) {
-							btn22.setText("-");
-							tablero[1][1] = '-';
-							turno--;
-
-
-						} 
-
 					}
-
 				} else {
-
-					
-						if (btn22.getText().equals("O") || btn22.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn22.setText("O");
-							turno();
-							tablero[1][1] = 'O';
+					if (turno <= 5) { 
+						fase1(btn22, "O", 1, 1);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn22, "O", 1, 1);
+						} else { 
+							fase21(btn22, "O", 1, 1);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn22.getText().equals("O")) {
-							btn22.setText("-");
-							tablero[1][1] = '-';
-							turno--;
-
-						} 
-
 					}
 				}
 			}
@@ -422,47 +279,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
+					if (turno <= 5) { 
+						fase1(btn23, "X", 1, 2);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn23, "X", 1, 2);
 						} else {
-							btn23.setText("X");
-							turno();
-							tablero[1][2] = 'X';
+							fase21(btn23, "X", 1, 2);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn23.getText().equals("X")) {
-							btn23.setText("-");
-							tablero[1][2] = '-';
-							turno--;
-
-						} 
-
 					}
 				} else {
-					
-						if (btn23.getText().equals("O") || btn23.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn23.setText("O");
-							turno();
-							tablero[1][2] = 'O';
+					if (turno <= 5) { 
+						fase1(btn23, "O", 1, 2);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn23, "O", 1, 2);
+						} else { 
+							fase21(btn23, "O", 1, 2);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn23.getText().equals("O")) {
-							btn23.setText("-");
-							tablero[1][2] = '-';
-							turno--;
-
-						}
-
 					}
 				}
 			}
@@ -471,46 +305,24 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn31.setText("X");
-							turno();
-							tablero[2][0] = 'X';
+					if (turno <= 5) { 
+						fase1(btn31, "X", 2, 0);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn31, "X", 2, 0);
+						} else { 
+							fase21(btn31, "X", 2, 0);
 						}
-					 
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn31.getText().equals("X")) {
-							btn31.setText("-");
-							tablero[2][0] = '-';
-							turno--;
-
-						} 
-
 					}
 				} else {
-					
-						if (btn31.getText().equals("O") || btn31.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn31.setText("O");
-							turno();
-							tablero[2][0] = 'O';
+					if (turno <= 5) { 
+						fase1(btn31, "O", 2, 0);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn31, "O", 2, 0);
+						} else { 
+							fase21(btn31, "O", 2, 0);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn31.getText().equals("O")) {
-							btn31.setText("-");
-							tablero[2][0] = '-';
-							turno--;
-
-						} 
 					}
 				}
 			}
@@ -519,47 +331,25 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					
-
-						if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn32.setText("X");
-							turno();
-							tablero[2][1] = 'X';
+					if (turno <= 5) { 
+						fase1(btn32, "X", 2, 1);
+					} else {
+						if (!haCambiado) { 
+							fase1(btn32, "X", 2, 1);
+						} else { 
+							fase1(btn32, "X", 2, 1);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn32.getText().equals("X")) {
-							btn32.setText("-");
-							tablero[2][1] = '-';
-							turno--;
-
-						} 
-
 					}
 				} else {
-					
-						if (btn32.getText().equals("O") || btn32.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn32.setText("O");
-							turno();
-							tablero[2][1] = 'O';
+					if (turno <= 5) { 
+
+						fase1(btn32, "O", 2, 1);
+					} else {
+						if (!haCambiado) { 
+							fase1(btn32, "O", 2, 1);
+						} else { 
+							fase1(btn32, "O", 2, 1);
 						}
-					
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn32.getText().equals("O")) {
-							btn32.setText("-");
-							tablero[2][1] = '-';
-							turno--;
-
-						} 
-
 					}
 				}
 			}
@@ -568,58 +358,28 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-
-				
-
-						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn33.setText("X");
-							turno();
-							tablero[2][2] = 'X';
+					if (turno <= 5) { 
+						fase1(btn33, "X", 2, 2);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn33, "X", 2, 2);
+						} else { 
+							fase21(btn33, "X", 2, 2);
 						}
-					
-					
-					if(turno >=4){
-						// fasse2 >5
-						if (btn33.getText().equals("X")) {
-							btn33.setText("-");
-							tablero[2][2] = '-';
-							turno--;
-
-
-						} 
-
 					}
 				} else {
-
-					
-						if (btn33.getText().equals("O") || btn33.getText().equals("X")) {
-							infoTurno.setText("Casilla Ocupada, marca otra casilla");
-						} else {
-							btn33.setText("O");
-							turno();
-							tablero[2][2] = 'O';
+					if (turno <= 5) { 
+						fase1(btn33, "O", 2, 2);
+					} else {
+						if (!haCambiado) { 
+							fase2(btn33, "O", 2, 2);
+						} else { 
+							fase21(btn33, "O", 2, 2);
 						}
-					 
-					
-					if(turno >= 4){
-						// fasse2 >5
-						if (btn33.getText().equals("O")) {
-							btn33.setText("-");
-							tablero[2][2] = '-';
-							turno--;
-
-
-						} 
-
 					}
-					
-
 				}
 			}
 		});
-
 	}
 	// Establece el tablero en espacios vacíos
 	static void limpiarTablero(char[][] tablero) {
@@ -654,7 +414,7 @@ public class Juego extends JFrame {
 		// la primera vez se decide por boolean random, true = primer jugador, false
 		// segundo jugador
 
-		
+		  
 		if (jugador) {
 			// implementar todas las funciones que se suceden durante el turno
 			// se suma el turno
@@ -672,7 +432,7 @@ public class Juego extends JFrame {
 			infoTurno.setText("Es el turno de " + jugador);
 		}
 		
-		if(turno >=4) {
+		if(turno >5) {
 			infoTurno.setText("Tienes que quitar una casilla tuya");
 
 		}
@@ -862,38 +622,84 @@ public class Juego extends JFrame {
 			}	  
 		}
 	
-	//FASE 2  seleccionar una ficha, y moverla <- AL TURNO 6 [@Eloi]
+		// FASE 2 seleccionar una ficha, y moverla <- AL TURNO 6 [@Eloi]
+
+		// comprobar ficha si estuya
+		// este método comprueba unicamente si la ficha es tuya
+		boolean moverFicha(String value) {
+			// miramos a que jugador le pertenece
+			if (jugador) {
+				if (value.equals('X')) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				if (value.equals('O')) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+		}
+
+		static void fase1(JToggleButton btn, String jugador, int y, int x) {
+
+			if (turno <= 5 && (btn.getText().equals("O")) || (btn.getText().equals("X"))) { // SI ES TURNO 6 O LA
+																							// CASILLA ESTA OCUPADA
+				infoTurno.setText("Casilla Ocupada, marca otra casilla"); // INFORMA AL USUARIO
+			} else { // SI NO ESTA OCUPADA y el turno es menor o igual a 6
+				btn.setText(jugador); // TE METE UNA X
+				turno(); // PASA TURNO
+				tablero[y][x] = jugador.charAt(0); // LA METE EN TABLERO
+			}
+
+		}
+
+		static void fase2(JToggleButton btn, String jugador, int y, int x) {
+
 	
-	// comprobar ficha si estuya
-	//este método comprueba unicamente si la ficha es tuya
-	boolean moverFicha(String value) {
-		// miramos a que jugador le pertenece
-		if (jugador) {
-			if (value.equals('X')) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			if (value.equals('O')) {
-				return true;
-			} else {
-				return false;
-			}
+			
+				if (btn.getText().equals(jugador) && !haCambiado) { // tenemos que mirar que la ficha se pueda
+					infoTurno.setText("Selecciona una casilla vacia");
+											// reemplazar y no se haya reemplazado otra antes
+					btn.setText(" "); // "reseteamos" la casilla
+					tablero[y][x] = ' ';
+
+					// todavia estoy en mi turno
+
+					// activamos el bool fase 2
+					haCambiado = true;
+				} else if ((btn.getText().equals("X") && jugador.equals("O"))
+						|| (btn.getText().equals("O") && jugador.equals("X"))) { // Si el jugador es 0 y la casilla es X
+																					// o al reves
+					infoTurno.setText("Casilla no es tuya, marca otra casilla");
+				} else {
+					infoTurno.setText("Casilla esta vacia, marca otra casilla");
+				}
+
+			
+
+		}
+
+		static void fase21(JToggleButton btn, String jugador, int y, int x) {
+
+			
+			if (btn.getText().equals(" ") && haCambiado) { // FASE 2 PARTE 2 si selecciona un espacio
+
+				// pintar la marca en esa casilla
+				btn.setText(jugador); //!! me marca en el mismo boton
+				// pintamos tambien el tablero
+				tablero[y][x] = jugador.charAt(0);
+				haCambiado = false;
+				// pasar turno
+				turno(); 
+
+			} // else {
+				// infoTurno.setText("Selecciona un espacio");
+				// }
+
 		}
 
 	}
-	
-	static void fase1(JToggleButton btn) {
-		
-		if(turno <= 6 && btn.getText().equals("O") || btn.getText().equals("X")) { //SI ES TURNO 6 O LA CASILLA ESTA OCUPADA
-			infoTurno.setText("Casilla Ocupada, marca otra casilla");  //INFORMA AL USUARIO
-		} else { // SI NO ESTA OCUPADA y el turno es menor o igual a 6
-			btn.setText("X"); //TE METE UNA X
-			turno(); //PASA TURNO
-			tablero[0][0] = 'X'; //LA METE EN TABLERO 
-		}
-		
-	}
-	
-}
