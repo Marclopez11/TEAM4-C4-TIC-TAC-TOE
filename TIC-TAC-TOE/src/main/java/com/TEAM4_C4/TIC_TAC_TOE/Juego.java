@@ -271,7 +271,7 @@ public class Juego extends JFrame {
 					} else {
 						if (!haCambiado) { // si no a cambiado la pieza ejecuta para cambiala
 							fase2(btn11, "O", 0, 0);
-						} else { // si a a cambiado selecciona para cambiarla
+						} else { // si a a cambiado selecciona para cambiarla //TODO: puede servir para CPU colocar ficha
 							fase21(btn11, "O", 0, 0);
 						}
 					}
@@ -610,10 +610,6 @@ public class Juego extends JFrame {
 	static boolean primerTurno() {
 		Random r = new Random();
 		return r.nextBoolean();
-		
-		
-
-		
 
 	}
 	
@@ -837,9 +833,6 @@ public class Juego extends JFrame {
 			} 
 
 		}
-		
-	
-		
 	
 		public void printarVictoria(List<JToggleButton> list, String XoO) {
 			for (JToggleButton button : list) { // recorremos toda la lista
@@ -857,4 +850,7 @@ public class Juego extends JFrame {
 				
 			}
 		}
+		
+		//TODO: Implementar CPU
+		
 	}
