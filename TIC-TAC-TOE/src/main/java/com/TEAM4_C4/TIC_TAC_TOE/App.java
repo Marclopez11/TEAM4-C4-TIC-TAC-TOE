@@ -144,6 +144,7 @@ public class App extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//instanciamos la otra pantalla
 				Juego abrir = new Juego();
+				JuegoCPU abrirCPU = new JuegoCPU();
 				//
 				if (rdbtn1.isSelected() && !tfNombreJ1.getText().trim().isEmpty()) {
 					
@@ -157,7 +158,7 @@ public class App extends JFrame {
 				}else if (rdbtn2.isSelected() && !tfNombreJ2.getText().trim().isEmpty() && !tfNombreJ1.getText().trim().isEmpty()) {
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText(tfNombreJ2.getText().trim());
-					abrir.setVisible(true);
+					abrirCPU.setVisible(true);
 					frame.setVisible(false);
 
 				} else {
