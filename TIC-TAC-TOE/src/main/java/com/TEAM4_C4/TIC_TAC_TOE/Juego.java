@@ -102,6 +102,7 @@ public class Juego extends JFrame {
 
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
+		btn11.setBackground(Color.BLACK);
 
 		panel.add(btn11);
 		panel.add(btn12);
@@ -813,16 +814,20 @@ public class Juego extends JFrame {
 
 		}
 		
+		
+	
 		public void printarVictoria(List<JToggleButton> list, String XoO) {
-			for (JToggleButton button : list) {
-				if(button.getText().equals(XoO)) {
-					button.setUI(new MetalToggleButtonUI() {
+			for (JToggleButton button : list) { // recorremos toda la lista
+				if(button.getText().equals(XoO)) { //marcar las ganadoras , los botones que tienen ese valor
+					button.setUI(new MetalToggleButtonUI() {//Contorno el boton
 					    @Override
-					    protected Color getSelectColor() {
-					        return Color.GREEN;
+					    protected Color getSelectColor() { 
+					        return Color.GREEN; //color verde
 					    }
 					});
 				}
+				
+				
 				button.setEnabled(false);
 				
 			}
