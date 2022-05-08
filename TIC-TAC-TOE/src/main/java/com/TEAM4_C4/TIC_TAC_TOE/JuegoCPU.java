@@ -29,6 +29,12 @@ public class JuegoCPU extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	//lo pasamos a un array que nos servirá para acceder desde la cpu
+	//ademas lo pasamos astatic para que se use desde los metodos
+	static JToggleButton btn[] = new JToggleButton[9];
+	static JLabel infoTurno = new JLabel("Turno: 1");
+	
 	public JuegoCPU() {
 
 		setTitle("Los treses en la línea [Team 4]");
@@ -41,8 +47,6 @@ public class JuegoCPU extends JFrame {
 		JLabel labelNombre1 = new JLabel("");
 		JLabel labelNombre2 = new JLabel("");
 		
-		//lo pasamos a un array que nos servirá para acceder desde la cpu
-		JToggleButton btn[] = new JToggleButton[9];
 		btn[0] = new JToggleButton(" ");
 		btn[1] = new JToggleButton(" ");
 		btn[2] = new JToggleButton(" ");
@@ -52,8 +56,6 @@ public class JuegoCPU extends JFrame {
 		btn[6] = new JToggleButton(" ");
 		btn[7] = new JToggleButton(" ");
 		btn[8] = new JToggleButton(" ");
-
-		JLabel infoTurno = new JLabel("Es el turno de "+ jugador);
 
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
 		setContentPane(contentPane);
@@ -192,6 +194,11 @@ public class JuegoCPU extends JFrame {
 
 			}
 		});
+		
+		//si es el turno de la máquina que inicie la jugada (al ser el jugador dos su turno es cuando el bool JUGADOR es false)
+		if(!jugador) { //funciona
+			comportamientoCpu();
+		}
 
 		//action listener jugada para todos los botones
 		ActionListener jugada = new ActionListener() {
@@ -220,26 +227,37 @@ public class JuegoCPU extends JFrame {
 	
 	//este es el movimento del jugador que sucede desde su turno
 	public static void movimientoJugador(JToggleButton btn) {
-		//fase1 turno 1 al 6
-		if(numeroTurno <= 6) {
+		//fase1 turno 1 al 3
+		if(numeroTurno <= 3) {
 			//comprobamos si se puede colocar sePuedeColocar()
 			if(sePuedeColocar(btn)) {
 				//en caso que se pueda colocamos la ficha
 				btn.setText("X");
+				//pasamos el bool a false
+				jugador = false;
 				//pasamos turno
-				turno();
+				comportamientoCpu();
 			}else{	//en caso que no se pueda informamos al usuario
 				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
 			}
-		}else { //fase2 a partir del turno 7
+		}else { //fase2 a partir del turno 3
 			//se comprueba si es su ficha para mover
 			
 			//se mueve a un espacio vacío sePuedeColocar()
 		}
 	}
 	
+	//metodo para ver si se puede colocar
 	public static boolean sePuedeColocar(JToggleButton btn) {
 		if(btn.getText() == " "){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	//sobrecarga del metodo para que lo pueda usar la CPU
+	public static boolean sePuedeColocar(int x) {
+		if(btn[x].getText() == " "){
 			return true;
 		}else {
 			return false;
@@ -248,31 +266,30 @@ public class JuegoCPU extends JFrame {
 	
 	public static Random r = new Random(); //Random estatico para acceder desde los metodos
 	public static boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
-	public static int numeroTurno = 0;
-	
-	//mecanica de turno
-	public static void turno() {
-		
-		//se suma el turno
+	public static int numeroTurno = 0;//inicializamos a 1 para contar con el turno del jugador
+
+	public static void comportamientoCpu(){
+		//sumamos turno
 		numeroTurno++;
-		//fase 1
-		//if jugador else cpu
-		if(jugador) {
-			//tiramos
-			//tiradaJugador();
-			//pasamos turno
-			jugador = false;
-		}else {
-			//tira la cpu con su estrategia
-			comportamientoCpu();
-			//se pasa el turno
-			jugador = true;
+		infoTurno.setText("Turno: "+numeroTurno);
+		
+		//de momento se pone random
+		if(numeroTurno == 1) {
+			movimientoAleatorioCpu();
+		}else if((numeroTurno <= 3)){
+			movimientoAleatorioCpu();
 		}
 		
 	}
-
-	public static void comportamientoCpu(){
-		//de momento se pone random
-		
+	//este es la tactica inicial de la CPU, y el ultimo recurso si se atasca
+	public static void movimientoAleatorioCpu() {
+		int x;
+		do {
+		//genera un numero del 0 al 8
+			x = r.nextInt(8);
+		//si se puede colocar pasa el bucle
+		}while(!sePuedeColocar(x));
+		//se coloca
+		btn[x].setText("O");
 	}
 }
