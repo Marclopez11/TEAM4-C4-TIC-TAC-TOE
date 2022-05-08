@@ -54,7 +54,10 @@ public class Juego extends JFrame {
 	// creo una variable turno inicializada
 	static int turno = 0;
 	static boolean octirada = false;
-	static final JLabel infoTurno = new JLabel("Es el turno de " + jugador);
+	
+
+
+	static  JLabel infoTurno = new JLabel("Es el turno de "+jugador);
 	public  static 	Juego juego = new Juego();
 	
 	//esta variable nos indica una vez llegada la fase 2, si el usuario ya ha quitado una ficha que quiere mover
@@ -80,6 +83,7 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 	public Juego() {
+
 		setTitle("Los treses en la línea [Team 4]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 600, 800, 400);
@@ -102,16 +106,34 @@ public class Juego extends JFrame {
 
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
+		btn11.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
 		btn11.setBackground(Color.BLACK);
 
 		panel.add(btn11);
+		btn12.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn12.setBackground(Color.BLACK);
 		panel.add(btn12);
+		btn13.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn13.setBackground(Color.BLACK);
 		panel.add(btn13);
+		btn21.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn21.setBackground(Color.BLACK);
 		panel.add(btn21);
+		btn22.setForeground(Color.BLACK);
+		btn22.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn22.setBackground(Color.BLACK);
 		panel.add(btn22);
+		btn23.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn23.setBackground(Color.BLACK);
 		panel.add(btn23);
+		btn31.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn31.setBackground(Color.BLACK);
 		panel.add(btn31);
+		btn32.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn32.setBackground(Color.BLACK);
 		panel.add(btn32);
+		btn33.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn33.setBackground(Color.BLACK);
 		panel.add(btn33);
 
 		/* Añadimos todos los botones en una lista para recorrerla dinamicamente */
@@ -588,6 +610,10 @@ public class Juego extends JFrame {
 	static boolean primerTurno() {
 		Random r = new Random();
 		return r.nextBoolean();
+		
+		
+
+		
 
 	}
 	
@@ -607,15 +633,15 @@ public class Juego extends JFrame {
 		
 		// la primera vez se decide por boolean random, true = primer jugador, false
 		// segundo jugador
-
-		  
+		
+		
 		if (jugador) {
 			// implementar todas las funciones que se suceden durante el turno
 			// se suma el turno
 			turno++;
 			// se cambia el valor del jugador para que le toque al siguiente
 			jugador = false;
-			infoTurno.setText("Es el turno de " + jugador);
+			infoTurno.setText("Es el turno de " + labelNombre1.getText());
 
 		} else {
 			// implementar todas las funciones que se suceden durante el turno
@@ -623,7 +649,7 @@ public class Juego extends JFrame {
 			turno++;
 			// se cambia el valor del jugador para que le toque al siguiente
 			jugador = true;
-			infoTurno.setText("Es el turno de " + jugador);
+			infoTurno.setText("Es el turno de " + labelNombre2.getText());
 		}
 		
 		if(turno >5) {
@@ -652,7 +678,7 @@ public class Juego extends JFrame {
 		/*Comprobamos en el turno del jugador. si se cumple una de las combinaciones de victoria*/
 		victoria = comprobarCondiciones(XoO);
 			if (victoria) {
-				infoTurno.setText("El jugador "  + XoO + "ha ganado");
+				infoTurno.setText("El jugador "  + XoO + " ha ganado");
 			}
 
 		return victoria;
@@ -808,12 +834,11 @@ public class Juego extends JFrame {
 				// pasar turno
 				turno(); 
 
-			} // else {
-				// infoTurno.setText("Selecciona un espacio");
-				// }
+			} 
 
 		}
 		
+	
 		
 	
 		public void printarVictoria(List<JToggleButton> list, String XoO) {
@@ -828,7 +853,7 @@ public class Juego extends JFrame {
 				}
 				
 				
-				button.setEnabled(false);
+				button.setEnabled(false); //desactivar todos los bottones
 				
 			}
 		}
