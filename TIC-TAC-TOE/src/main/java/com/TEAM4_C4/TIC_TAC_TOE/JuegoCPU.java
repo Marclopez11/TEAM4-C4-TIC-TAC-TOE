@@ -15,6 +15,7 @@ import java.util.Random;
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.metal.MetalToggleButtonUI;
@@ -24,15 +25,6 @@ import java.awt.Font;
 public class JuegoCPU extends JFrame {
 
 	private JPanel contentPane;
-
-	// Iniciar tablero
-	public static char[][] tablero = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
-	public static Random r = new Random(); //Random estatico para acceder desde los metodos
-	public static boolean jugador; //inicializamos un bool static para el jugador
-
-	
-	//esta variable nos indica una vez llegada la fase 2, si el usuario ya ha quitado una ficha que quiere mover
-	public boolean haCambiado = false;
 
 	/**
 	 * Create the frame.
@@ -48,6 +40,8 @@ public class JuegoCPU extends JFrame {
 		
 		JLabel labelNombre1 = new JLabel("");
 		JLabel labelNombre2 = new JLabel("");
+		
+		JToggleButton btn[] = new JToggleButton[9];
 		
 		JToggleButton btn11 = new JToggleButton(" ");
 		JToggleButton btn12 = new JToggleButton(" ");
@@ -204,18 +198,19 @@ public class JuegoCPU extends JFrame {
 			}
 		});
 
-		// LISTENERS
-		//action listener jugada
+		//action listener jugada para todos los botones
 		ActionListener jugada = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println("hola");
+				//el boton se pasa por parametro con el get source que devuelve el OBJETO que ha activado el evento, en nuestro caso ha sido el JToggleButton
+				//como devuelve un OBJETO se tiene que CASTEAR a JToggleButton
+				movimientoJugador((JToggleButton) e.getSource());
 				
 			}
 		};
 		
+		//addActionListener a cada boton
 		//se podría hacer en un array
 		btn11.addActionListener(jugada);
 		btn12.addActionListener(jugada);
@@ -231,9 +226,61 @@ public class JuegoCPU extends JFrame {
 		
 	}
 	
-	//metodo limpiar tablero
-	public static void limpiarTablero() {
+	//este es el movimento del jugador que sucede desde su turno
+	public static void movimientoJugador(JToggleButton btn) {
+		//fase1 turno 1 al 6
+		if(numeroTurno <= 6) {
+			//comprobamos si se puede colocar sePuedeColocar()
+			if(sePuedeColocar(btn)) {
+				//en caso que se pueda colocamos la ficha
+				btn.setText("X");
+				//pasamos turno
+				turno();
+			}else{	//en caso que no se pueda informamos al usuario
+				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
+			}
+		}else { //fase2 a partir del turno 7
+			//se comprueba si es su ficha para mover
+			
+			//se mueve a un espacio vacío sePuedeColocar()
+		}
+	}
+	
+	public static boolean sePuedeColocar(JToggleButton btn) {
+		if(btn.getText() == " "){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static Random r = new Random(); //Random estatico para acceder desde los metodos
+	public static boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
+	public static int numeroTurno = 0;
+	
+	//mecanica de turno
+	public static void turno() {
+		
+		//se suma el turno
+		numeroTurno++;
+		//fase 1
+		//if jugador else cpu
+		if(jugador) {
+			//tiramos
+			//tiradaJugador();
+			//pasamos turno
+			jugador = false;
+		}else {
+			//tira la cpu con su estrategia
+			comportamientoCpu();
+			//se pasa el turno
+			jugador = true;
+		}
 		
 	}
 
+	public static void comportamientoCpu(){
+		//de momento se pone random
+		
+	}
 }
