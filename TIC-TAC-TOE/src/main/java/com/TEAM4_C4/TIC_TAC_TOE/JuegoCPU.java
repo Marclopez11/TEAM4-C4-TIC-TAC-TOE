@@ -41,17 +41,17 @@ public class JuegoCPU extends JFrame {
 		JLabel labelNombre1 = new JLabel("");
 		JLabel labelNombre2 = new JLabel("");
 		
+		//lo pasamos a un array que nos servirá para acceder desde la cpu
 		JToggleButton btn[] = new JToggleButton[9];
-		
-		JToggleButton btn11 = new JToggleButton(" ");
-		JToggleButton btn12 = new JToggleButton(" ");
-		JToggleButton btn13 = new JToggleButton(" ");
-		JToggleButton btn21 = new JToggleButton(" ");
-		JToggleButton btn22 = new JToggleButton(" ");
-		JToggleButton btn23 = new JToggleButton(" ");
-		JToggleButton btn31 = new JToggleButton(" ");
-		JToggleButton btn32 = new JToggleButton(" ");
-		JToggleButton btn33 = new JToggleButton(" ");
+		btn[0] = new JToggleButton(" ");
+		btn[1] = new JToggleButton(" ");
+		btn[2] = new JToggleButton(" ");
+		btn[3] = new JToggleButton(" ");
+		btn[4] = new JToggleButton(" ");
+		btn[5] = new JToggleButton(" ");
+		btn[6] = new JToggleButton(" ");
+		btn[7] = new JToggleButton(" ");
+		btn[8] = new JToggleButton(" ");
 
 		JLabel infoTurno = new JLabel("Es el turno de "+ jugador);
 
@@ -71,47 +71,42 @@ public class JuegoCPU extends JFrame {
 		//se podría hacer en un array
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
-		btn11.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn11.setBackground(Color.BLACK);
-
-		panel.add(btn11);
-		btn12.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn12.setBackground(Color.BLACK);
-		panel.add(btn12);
-		btn13.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn13.setBackground(Color.BLACK);
-		panel.add(btn13);
-		btn21.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn21.setBackground(Color.BLACK);
-		panel.add(btn21);
-		btn22.setForeground(Color.BLACK);
-		btn22.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn22.setBackground(Color.BLACK);
-		panel.add(btn22);
-		btn23.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn23.setBackground(Color.BLACK);
-		panel.add(btn23);
-		btn31.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn31.setBackground(Color.BLACK);
-		panel.add(btn31);
-		btn32.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn32.setBackground(Color.BLACK);
-		panel.add(btn32);
-		btn33.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
-		btn33.setBackground(Color.BLACK);
-		panel.add(btn33);
-
-		/* Añadimos todos los botones en una lista para recorrerla dinamicamente */
-		final List<JToggleButton> listButton = new ArrayList<JToggleButton>();
-		listButton.add(btn11);
-		listButton.add(btn12);
-		listButton.add(btn13);
-		listButton.add(btn21);
-		listButton.add(btn22);
-		listButton.add(btn23);
-		listButton.add(btn31);
-		listButton.add(btn32);
-		listButton.add(btn33);
+		btn[0].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[0].setBackground(Color.BLACK);
+		panel.add(btn[0]);
+		
+		btn[1].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[1].setBackground(Color.BLACK);
+		panel.add(btn[1]);
+		
+		btn[2].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[2].setBackground(Color.BLACK);
+		panel.add(btn[2]);
+		
+		btn[3].setForeground(Color.BLACK);
+		btn[3].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[3].setBackground(Color.BLACK);
+		panel.add(btn[3]);
+		
+		btn[4].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[4].setBackground(Color.BLACK);
+		panel.add(btn[4]);
+		
+		btn[5].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[5].setBackground(Color.BLACK);
+		panel.add(btn[5]);
+		
+		btn[6].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[6].setBackground(Color.BLACK);
+		panel.add(btn[6]);
+		
+		btn[7].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[7].setBackground(Color.BLACK);
+		panel.add(btn[7]);
+		
+		btn[8].setFont(new Font("Lucida Grande", Font.PLAIN, 45));
+		btn[8].setBackground(Color.BLACK);
+		panel.add(btn[8]);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
@@ -211,18 +206,15 @@ public class JuegoCPU extends JFrame {
 		};
 		
 		//addActionListener a cada boton
-		//se podría hacer en un array
-		btn11.addActionListener(jugada);
-		btn12.addActionListener(jugada);
-		btn13.addActionListener(jugada);
-		
-		btn21.addActionListener(jugada);
-		btn22.addActionListener(jugada);
-		btn23.addActionListener(jugada);
-		
-		btn31.addActionListener(jugada);
-		btn32.addActionListener(jugada);
-		btn33.addActionListener(jugada);
+		btn[0].addActionListener(jugada);
+		btn[1].addActionListener(jugada);
+		btn[2].addActionListener(jugada);
+		btn[3].addActionListener(jugada);
+		btn[4].addActionListener(jugada);
+		btn[5].addActionListener(jugada);
+		btn[6].addActionListener(jugada);
+		btn[7].addActionListener(jugada);
+		btn[8].addActionListener(jugada);
 		
 	}
 	
