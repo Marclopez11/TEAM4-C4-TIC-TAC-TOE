@@ -91,6 +91,7 @@ public class Juego extends JFrame {
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 
 		final JToggleButton btn11 = new JToggleButton(" ");
+		
 		panel.add(btn11);
 		final JToggleButton btn12 = new JToggleButton(" ");
 		panel.add(btn12);
@@ -125,7 +126,7 @@ public class Juego extends JFrame {
 				contentPane.add(btnNuevaPartida);
 				btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 				btnNuevaPartida.setForeground(new Color(0, 0, 0));
-				infoTurno.setBounds(568, 290, 134, 16);
+				infoTurno.setBounds(480, 290, 305, 16);
 				contentPane.add(infoTurno);
 				infoTurno.setFont(new Font("New Peninim MT", Font.BOLD, 15));
 				
