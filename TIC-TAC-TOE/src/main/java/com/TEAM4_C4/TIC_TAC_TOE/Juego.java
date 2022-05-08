@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.JToggleButton;
@@ -19,6 +21,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.metal.MetalToggleButtonUI;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JEditorPane;
@@ -34,6 +37,16 @@ public class Juego extends JFrame {
 
 	public static JLabel labelNombre1 = new JLabel("");
 	public static JLabel labelNombre2 = new JLabel("");
+	JToggleButton btn11 = new JToggleButton(" ");
+	JToggleButton btn12 = new JToggleButton(" ");
+	JToggleButton btn13 = new JToggleButton(" ");
+	JToggleButton btn21 = new JToggleButton(" ");
+	JToggleButton btn22 = new JToggleButton(" ");
+	JToggleButton btn23 = new JToggleButton(" ");
+	JToggleButton btn31 = new JToggleButton(" ");
+	JToggleButton btn32 = new JToggleButton(" ");
+	JToggleButton btn33 = new JToggleButton(" ");
+	 
 
 
 	// este boolean determina quien empieza la partida:
@@ -85,122 +98,125 @@ public class Juego extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBounds(18, 16, 440, 335);
-		panel.setBorder(new EmptyBorder(5,5,5,5));
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 
-		final JToggleButton btn11 = new JToggleButton(" ");
-		
 		panel.add(btn11);
-		final JToggleButton btn12 = new JToggleButton(" ");
 		panel.add(btn12);
-		final JToggleButton btn13 = new JToggleButton(" ");
 		panel.add(btn13);
-		final JToggleButton btn21 = new JToggleButton(" ");
 		panel.add(btn21);
-		final JToggleButton btn22 = new JToggleButton(" ");
 		panel.add(btn22);
-		final JToggleButton btn23 = new JToggleButton(" ");
 		panel.add(btn23);
-		final JToggleButton btn31 = new JToggleButton(" ");
 		panel.add(btn31);
-		final JToggleButton btn32 = new JToggleButton(" ");
 		panel.add(btn32);
-		final JToggleButton btn33 = new JToggleButton(" ");
 		panel.add(btn33);
-		
+
+		/* Añadimos todos los botones en una lista para recorrerla dinamicamente */
+		final List<JToggleButton> listButton = new ArrayList<JToggleButton>();
+		listButton.add(btn11);
+		listButton.add(btn12);
+		listButton.add(btn13);
+		listButton.add(btn21);
+		listButton.add(btn22);
+		listButton.add(btn23);
+		listButton.add(btn31);
+		listButton.add(btn32);
+		listButton.add(btn33);
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 0, 0));
 		panel_1.setBounds(470, 49, 3, 223);
 		contentPane.add(panel_1);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
 		lblNewLabel.setBounds(0, -22, 471, 394);
 		contentPane.add(lblNewLabel);
-		
-				JButton btnNuevaPartida = new JButton("Nueva Partida");
-				btnNuevaPartida.setBackground(new Color(255, 255, 255));
-				btnNuevaPartida.setBounds(543, 4, 181, 36);
-				contentPane.add(btnNuevaPartida);
-				btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-				btnNuevaPartida.setForeground(new Color(0, 0, 0));
-				infoTurno.setBounds(480, 290, 305, 16);
-				contentPane.add(infoTurno);
-				infoTurno.setFont(new Font("New Peninim MT", Font.BOLD, 15));
-				
-				JLabel lblNewLabel_1 = new JLabel("New label");
-				lblNewLabel_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
-				lblNewLabel_1.setBounds(464, 272, 334, 46);
-				contentPane.add(lblNewLabel_1);
-				
-				JLabel lblNewLabel_1_1 = new JLabel("New label");
-				lblNewLabel_1_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
-				lblNewLabel_1_1.setBounds(470, 0, 328, 49);
-				contentPane.add(lblNewLabel_1_1);
-				
-				JPanel panel_2 = new JPanel();
-				panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				panel_2.setBackground(new Color(0, 0, 0));
-				panel_2.setBounds(470, 269, 330, 3);
-				contentPane.add(panel_2);
-				
-				JPanel panel_2_1 = new JPanel();
-				panel_2_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				panel_2_1.setBackground(Color.BLACK);
-				panel_2_1.setBounds(470, 318, 330, 3);
-				contentPane.add(panel_2_1);
-				
-				JPanel panel_2_1_1 = new JPanel();
-				panel_2_1_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				panel_2_1_1.setBackground(Color.BLACK);
-				panel_2_1_1.setBounds(470, 49, 330, 3);
-				contentPane.add(panel_2_1_1);
-				
-				JPanel panel_1_1 = new JPanel();
-				panel_1_1.setBackground(Color.BLACK);
-				panel_1_1.setBounds(470, 318, 3, 54);
-				contentPane.add(panel_1_1);
-				
-				JPanel panel_1_2 = new JPanel();
-				panel_1_2.setBackground(Color.BLACK);
-				panel_1_2.setBounds(797, 0, 2, 372);
-				contentPane.add(panel_1_2);
-				
-				JLabel lblPlayer = new JLabel("PLAYER 1");
-				lblPlayer.setFont(new Font("Tahoma", Font.BOLD, 16));
-				lblPlayer.setBounds(485, 77, 128, 16);
-				contentPane.add(lblPlayer);
-				
-				JLabel lblPlayer_2 = new JLabel("PLAYER 2");
-				lblPlayer_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-				lblPlayer_2.setBounds(485, 167, 128, 16);
-				contentPane.add(lblPlayer_2);
-				
-				labelNombre2.setFont(new Font("Palatino", Font.BOLD, 13));
-				labelNombre2.setBounds(485, 207, 314, 16);
-				contentPane.add(labelNombre2);
-				
-				JPanel panel_2_1_2 = new JPanel();
-				panel_2_1_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				panel_2_1_2.setBackground(Color.BLACK);
-				panel_2_1_2.setBounds(470, 369, 330, 3);
-				contentPane.add(panel_2_1_2);
-				
-				
-				
 
-				btnNuevaPartida.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		JButton btnNuevaPartida = new JButton("Nueva Partida");
+		btnNuevaPartida.setBackground(new Color(255, 255, 255));
+		btnNuevaPartida.setBounds(543, 4, 181, 36);
+		contentPane.add(btnNuevaPartida);
+		btnNuevaPartida.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnNuevaPartida.setForeground(new Color(0, 0, 0));
+		infoTurno.setBounds(480, 290, 305, 16);
+		contentPane.add(infoTurno);
+		infoTurno.setFont(new Font("New Peninim MT", Font.BOLD, 15));
 
-						limpiarTablero(tablero);
-						juego.setVisible(false);
-						App abrir = new App();
-						abrir.setVisible(true);
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
+		lblNewLabel_1.setBounds(464, 272, 334, 46);
+		contentPane.add(lblNewLabel_1);
 
-					}
-				});
+		JLabel lblNewLabel_1_1 = new JLabel("New label");
+		lblNewLabel_1_1.setIcon(new ImageIcon(Juego.class.getResource("/com/TEAM4_C4/TIC_TAC_TOE/img/fondo.png")));
+		lblNewLabel_1_1.setBounds(470, 0, 328, 49);
+		contentPane.add(lblNewLabel_1_1);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2.setBackground(new Color(0, 0, 0));
+		panel_2.setBounds(470, 269, 330, 3);
+		contentPane.add(panel_2);
+
+		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2_1.setBackground(Color.BLACK);
+		panel_2_1.setBounds(470, 318, 330, 3);
+		contentPane.add(panel_2_1);
+
+		JPanel panel_2_1_1 = new JPanel();
+		panel_2_1_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2_1_1.setBackground(Color.BLACK);
+		panel_2_1_1.setBounds(470, 49, 330, 3);
+		contentPane.add(panel_2_1_1);
+
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBackground(Color.BLACK);
+		panel_1_1.setBounds(470, 318, 3, 54);
+		contentPane.add(panel_1_1);
+
+		JPanel panel_1_2 = new JPanel();
+		panel_1_2.setBackground(Color.BLACK);
+		panel_1_2.setBounds(797, 0, 2, 372);
+		contentPane.add(panel_1_2);
+
+		JLabel lblPlayer = new JLabel("PLAYER 1");
+		lblPlayer.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPlayer.setBounds(485, 77, 128, 16);
+		contentPane.add(lblPlayer);
+
+		JLabel lblPlayer_2 = new JLabel("PLAYER 2");
+		lblPlayer_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPlayer_2.setBounds(485, 167, 128, 16);
+		contentPane.add(lblPlayer_2);
+
+		labelNombre2.setFont(new Font("Palatino", Font.BOLD, 13));
+		labelNombre2.setBounds(485, 207, 314, 16);
+		contentPane.add(labelNombre2);
+
+		JPanel panel_2_1_2 = new JPanel();
+		panel_2_1_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2_1_2.setBackground(Color.BLACK);
+		panel_2_1_2.setBounds(470, 369, 330, 3);
+		contentPane.add(panel_2_1_2);
+
+		btnNuevaPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				limpiarTablero(tablero);
+				juego.setVisible(false);
+				App abrir = new App();
+				abrir.setVisible(true);
+				// Resetamos el turno a 0
+				turno = 0;
+				// El jugador1 volverá a ser la X
+				jugador = true;
+
+			}
+		});
 
 		// LISTENERS
 		btn11.addActionListener(new ActionListener() {
@@ -216,6 +232,15 @@ public class Juego extends JFrame {
 						} else { // si a a cambiado selecciona para cambiarla
 							fase21(btn11, "X", 0, 0);
 						}
+
+					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+
 					}
 				} else {
 					if (turno <= 5) { // Si el turno es menor o igual a 5 estara haciendo la fase 1
@@ -225,6 +250,11 @@ public class Juego extends JFrame {
 							fase2(btn11, "O", 0, 0);
 						} else { // si a a cambiado selecciona para cambiarla
 							fase21(btn11, "O", 0, 0);
+						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
 						}
 					}
 				}
@@ -237,20 +267,32 @@ public class Juego extends JFrame {
 					if (turno <= 5) {
 						fase1(btn12, "X", 0, 1);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn12, "X", 0, 1);
-						} else { 
+						} else {
 							fase21(btn12, "X", 0, 1);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn12, "O", 0, 1);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn12, "O", 0, 1);
-						} else { 
+						} else {
 							fase21(btn12, "O", 0, 1);
+						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
 						}
 					}
 				}
@@ -260,23 +302,35 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn13, "X", 0, 2);
 					} else {
 						if (!haCambiado) {
 							fase2(btn13, "X", 0, 2);
-						} else { 
+						} else {
 							fase21(btn13, "X", 0, 2);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn13, "O", 0, 2);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn13, "O", 0, 2);
-						} else { 
+						} else {
 							fase21(btn13, "O", 0, 2);
+						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
 						}
 					}
 				}
@@ -286,23 +340,35 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn21, "X", 1, 0);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn21, "X", 1, 0);
 						} else {
 							fase21(btn21, "X", 1, 0);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn21, "O", 1, 0);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn21, "O", 1, 0);
-						} else { 
+						} else {
 							fase21(btn21, "O", 1, 0);
+						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
 						}
 					}
 				}
@@ -312,24 +378,37 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn22, "X", 1, 1);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn22, "X", 1, 1);
-						} else { 
+						} else {
 							fase21(btn22, "X", 1, 1);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn22, "O", 1, 1);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn22, "O", 1, 1);
-						} else { 
+						} else {
 							fase21(btn22, "O", 1, 1);
 						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
+						}
+
 					}
 				}
 			}
@@ -338,23 +417,37 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn23, "X", 1, 2);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn23, "X", 1, 2);
 						} else {
 							fase21(btn23, "X", 1, 2);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn23, "O", 1, 2);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn23, "O", 1, 2);
-						} else { 
+						} else {
 							fase21(btn23, "O", 1, 2);
+						}
+					}
+					if (turno > 4) {
+
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
 						}
 					}
 				}
@@ -364,24 +457,39 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn31, "X", 2, 0);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn31, "X", 2, 0);
-						} else { 
+						} else {
 							fase21(btn31, "X", 2, 0);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn31, "O", 2, 0);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn31, "O", 2, 0);
-						} else { 
+						} else {
 							fase21(btn31, "O", 2, 0);
 						}
+
+					}
+					// Comprobamos que del turno 5 en adelante puede darse condicion de victoria
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
+						}
+
 					}
 				}
 			}
@@ -390,25 +498,38 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn32, "X", 2, 1);
 					} else {
-						if (!haCambiado) { 
-							fase1(btn32, "X", 2, 1);
-						} else { 
-							fase1(btn32, "X", 2, 1);
+						if (!haCambiado) {
+							fase2(btn32, "X", 2, 1);
+						} else {
+							fase21(btn32, "X", 2, 1);
+						}
+					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
 						}
 					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 
 						fase1(btn32, "O", 2, 1);
 					} else {
-						if (!haCambiado) { 
-							fase1(btn32, "O", 2, 1);
-						} else { 
-							fase1(btn32, "O", 2, 1);
+						if (!haCambiado) {
+							fase2(btn32, "O", 2, 1);
+						} else {
+							fase21(btn32, "O", 2, 1);
 						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
+						}
+
 					}
 				}
 			}
@@ -417,24 +538,37 @@ public class Juego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jugador) {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn33, "X", 2, 2);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn33, "X", 2, 2);
-						} else { 
+						} else {
 							fase21(btn33, "X", 2, 2);
 						}
 					}
+					if (turno > 4) {
+						// Comprobamos victoria para jugador X
+						if (comprobarVictoria('X')) {
+
+							printarVictoria(listButton, "X");
+						}
+					}
 				} else {
-					if (turno <= 5) { 
+					if (turno <= 5) {
 						fase1(btn33, "O", 2, 2);
 					} else {
-						if (!haCambiado) { 
+						if (!haCambiado) {
 							fase2(btn33, "O", 2, 2);
-						} else { 
+						} else {
 							fase21(btn33, "O", 2, 2);
 						}
+					}
+					if (turno > 4) {
+						if (comprobarVictoria('O')) { // Comprobamos O
+							printarVictoria(listButton, "O");
+						}
+
 					}
 				}
 			}
@@ -451,7 +585,6 @@ public class Juego extends JFrame {
 
 	// random quien empieza (random boolean)
 	static boolean primerTurno() {
-
 		Random r = new Random();
 		return r.nextBoolean();
 
@@ -464,6 +597,7 @@ public class Juego extends JFrame {
 			}
 			System.out.println();
 		}
+		System.out.println("Turno: " + turno);
 	}
 
 	static void turno() {
@@ -506,180 +640,98 @@ public class Juego extends JFrame {
 	 *  [ ] [ ] [ ]
 	 */
 	
-	public void comprobarVictoria(boolean jugador) {
+	public boolean comprobarVictoria( char XoO) {
 		// mientras no tengamos ganador, comprobaremos todas la combinaciones ganadoras:
-		boolean ganaX = false;
-		boolean ganaO = false;
+		boolean victoria = false;
 		// ganaX = true;
 		// ganaO = true;
 		
 		// comprobaremos el array con cada una de las combinaciones ganadoras
 		
-		//X o O
-		if(jugador) {
-			//turno X
-			if(tablero[0][0] == 'X' && tablero[1][0] == 'X' && tablero[2][0] == 'X') {
-				
-				/*	  0   1   2
-				 * 0 [1] [ ] [ ]
-				 * 1 [1] [ ] [ ]
-				 * 2 [1] [ ] [ ]
-				 */
-				ganaX = true;
-				
+		/*Comprobamos en el turno del jugador. si se cumple una de las combinaciones de victoria*/
+		victoria = comprobarCondiciones(XoO);
+			if (victoria) {
+				infoTurno.setText("El jugador "  + XoO + "ha ganado");
 			}
-			if(tablero[0][1] == 'X' && tablero[1][1] == 'X' && tablero[2][1] == 'X') {
-				/*	  0   1   2
-				 * 0 [ ] [1] [ ]
-				 * 1 [ ] [1] [ ]
-				 * 2 [ ] [1] [ ]
-				 */
-				ganaX = true;
-			}
-			if(tablero[0][2] == 'X' && tablero[1][2] == 'X' && tablero[2][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [1]
-				 * 1 [ ] [ ] [1]
-				 * 2 [ ] [ ] [1]
-				 */
-				ganaX = true;
-			}
-			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [1] [1] [1]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaX = true;
-			}
-			if(tablero[0][0] == 'X' && tablero[0][1] == 'X' && tablero[0][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [1] [1] [1]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaX = true;
-			}
-			if(tablero[1][0] == 'X' && tablero[1][1] == 'X' && tablero[1][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [ ]
-				 * 1 [1] [1] [1]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaX = true;
-			}
-			if(tablero[2][0] == 'X' && tablero[2][1] == 'X' && tablero[2][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [ ]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [1] [1] [1]
-				 */
-				ganaX = true;
-			}
+
+		return victoria;
+	}
+
+	public boolean comprobarCondiciones(char valorXoO) {
+		boolean ganaX = false;
+		if(tablero[0][0] == valorXoO && tablero[1][0] == valorXoO && tablero[2][0] == valorXoO) {
 			
-			// diagonal1
-			if(tablero[0][0] == 'X' && tablero[1][1] == 'X' && tablero[2][2] == 'X') {
-				/*	  0   1   2
-				 * 0 [1] [ ] [ ]
-				 * 1 [ ] [1] [ ]
-				 * 2 [ ] [ ] [1]
-				 */
-				ganaX = true;
-			}
+			/*	  0   1   2
+			 * 0 [1] [ ] [ ]
+			 * 1 [1] [ ] [ ]
+			 * 2 [1] [ ] [ ]
+			 */
+			ganaX = true;
 			
-			// diagonal2
-			if(tablero[0][2] == 'X' && tablero[1][1] == 'X' && tablero[2][0] == 'X') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [1]
-				 * 1 [ ] [1] [ ]
-				 * 2 [1] [ ] [ ]
-				 */
-				ganaX = true;
-			}
-			
-			if (ganaX == true) infoTurno.setText("El equipo X ha ganado");
-			
-		}else {
-			//turno O
-			if(tablero[0][0] == 'O' && tablero[1][0] == 'O' && tablero[2][0] == 'O') {
-				/*	  0   1   2
-				 * 0 [1] [ ] [ ]
-				 * 1 [1] [ ] [ ]
-				 * 2 [1] [ ] [ ]
-				 */
-				ganaO = true;
-			}
-			if(tablero[0][1] == 'O' && tablero[1][1] == 'O' && tablero[2][1] == 'O') {
-				/*	  0   1   2
-				 * 0 [ ] [1] [ ]
-				 * 1 [ ] [1] [ ]
-				 * 2 [ ] [1] [ ]
-				 */
-				ganaO = true;
-			}
-			if(tablero[0][2] == 'O' && tablero[1][2] == 'O' && tablero[2][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [1]
-				 * 1 [ ] [ ] [1]
-				 * 2 [ ] [ ] [1]
-				 */
-				ganaO = true;
-			}
-			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [1] [1] [1]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaO = true;
-			}
-			if(tablero[0][0] == 'O' && tablero[0][1] == 'O' && tablero[0][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [1] [1] [1]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaO = true;
-			}
-			if(tablero[1][0] == 'O' && tablero[1][1] == 'O' && tablero[1][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [ ]
-				 * 1 [1] [1] [1]
-				 * 2 [ ] [ ] [ ]
-				 */
-				ganaO = true;
-			}
-			if(tablero[2][0] == 'O' && tablero[2][1] == 'O' && tablero[2][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [ ]
-				 * 1 [ ] [ ] [ ]
-				 * 2 [1] [1] [1]
-				 */
-				ganaO = true;
-			}
-			// diagonal1
-			if(tablero[0][0] == 'O' && tablero[1][1] == 'O' && tablero[2][2] == 'O') {
-				/*	  0   1   2
-				 * 0 [1] [ ] [ ]
-				 * 1 [ ] [1] [ ]
-				 * 2 [ ] [ ] [1]
-				 */
-				ganaO = true;
-			}
-			// diagonal2
-			if(tablero[0][2] == 'O' && tablero[1][1] == 'O' && tablero[2][0] == 'O') {
-				/*	  0   1   2
-				 * 0 [ ] [ ] [1]
-				 * 1 [ ] [1] [ ]
-				 * 2 [1] [ ] [ ]
-				 */
-				ganaO = true;
-			}
-			
-			if (ganaO == true) infoTurno.setText("El equipo O ha ganado");
-			
-			}	  
 		}
+		else if(tablero[0][1] == valorXoO && tablero[1][1] == valorXoO && tablero[2][1] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [ ] [1] [ ]
+			 * 1 [ ] [1] [ ]
+			 * 2 [ ] [1] [ ]
+			 */
+			ganaX = true;
+		}
+		else if(tablero[0][2] == valorXoO && tablero[1][2] == valorXoO && tablero[2][2] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [ ] [ ] [1]
+			 * 1 [ ] [ ] [1]
+			 * 2 [ ] [ ] [1]
+			 */
+			ganaX = true;
+		}
+		else if(tablero[0][0] == valorXoO && tablero[0][1] == valorXoO && tablero[0][2] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [1] [1] [1]
+			 * 1 [ ] [ ] [ ]
+			 * 2 [ ] [ ] [ ]
+			 */
+			ganaX = true;
+		}
+		else if(tablero[1][0] == valorXoO && tablero[1][1] == valorXoO && tablero[1][2] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [ ] [ ] [ ]
+			 * 1 [1] [1] [1]
+			 * 2 [ ] [ ] [ ]
+			 */
+			ganaX = true;
+		}
+		else if(tablero[2][0] == valorXoO && tablero[2][1] == valorXoO && tablero[2][2] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [ ] [ ] [ ]
+			 * 1 [ ] [ ] [ ]
+			 * 2 [1] [1] [1]
+			 */
+			ganaX = true;
+		}
+		
+		// diagonal1
+		else if(tablero[0][0] == valorXoO && tablero[1][1] == valorXoO && tablero[2][2] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [1] [ ] [ ]
+			 * 1 [ ] [1] [ ]
+			 * 2 [ ] [ ] [1]
+			 */
+			ganaX = true;
+		}
+		
+		// diagonal2
+		else if(tablero[0][2] == valorXoO && tablero[1][1] == valorXoO && tablero[2][0] == valorXoO) {
+			/*	  0   1   2
+			 * 0 [ ] [ ] [1]
+			 * 1 [ ] [1] [ ]
+			 * 2 [1] [ ] [ ]
+			 */
+			ganaX = true;
+		}
+		
+		 return ganaX;
+	}
 	
 		// FASE 2 seleccionar una ficha, y moverla <- AL TURNO 6 [@Eloi]
 
@@ -759,5 +811,20 @@ public class Juego extends JFrame {
 				// infoTurno.setText("Selecciona un espacio");
 				// }
 
+		}
+		
+		public void printarVictoria(List<JToggleButton> list, String XoO) {
+			for (JToggleButton button : list) {
+				if(button.getText().equals(XoO)) {
+					button.setUI(new MetalToggleButtonUI() {
+					    @Override
+					    protected Color getSelectColor() {
+					        return Color.GREEN;
+					    }
+					});
+				}
+				button.setEnabled(false);
+				
+			}
 		}
 	}
