@@ -272,15 +272,82 @@ public class JuegoCPU extends JFrame {
 		//sumamos turno
 		numeroTurno++;
 		infoTurno.setText("Turno: "+numeroTurno);
-		
 		//de momento se pone random
 		if(numeroTurno == 1) {
 			movimientoAleatorioCpu();
 		}else if((numeroTurno <= 3)){
+			//decidirJugadaCpu();
 			movimientoAleatorioCpu();
 		}
-		
 	}
+	//TODO Implementar
+	//moviento para decidir  intentar jugada o bloquear
+	public static void decidirJugadaCpu() {
+		//la cpu tiene como prioridad bloquear al jugador para eso se recorre el array y se mira cuantas fichas del jugador hay en tablero
+		int numeroX = 0;
+		for (int i = 0; i < btn.length; i++) {
+			if(btn[i].getText() == "X") {
+				numeroX++;
+			}
+		}
+		//si resulta que hay mas de dos fichas del jugador se va a intentar bloquear
+		if(numeroX >= 2) {
+			bloquearAlJugador();
+		}else { //TODO: Cambiar por intentar jugada
+			movimientoAleatorioCpu();
+		}
+	}
+	
+	public static void bloquearAlJugador() {
+		//se crea el array de posiciones
+		ArrayList<Integer> posiciones = new ArrayList<Integer>();
+		//se recorre el array de botones y se guardan las posiciones del JUGADOR
+		for (int i = 0; i < btn.length; i++) {
+			if(btn[i].getText() == "X") {
+				posiciones.add(i);
+			}
+		}
+		//se calcula la posible victoria y se bloquea
+		//analizamos is las fichas estan en posicion de posible victoria h1)123 v1)147 d)159
+		if(posiciones.get(0) == 1 && (posiciones.get(1) == 2 || posiciones.get(1) == 4 || posiciones.get(1) == 5)) {
+			if(posiciones.get(1) == 2) {
+				intentarBloquear(3);
+			}
+			if(posiciones.get(1) == 4) {
+				intentarBloquear(7);
+			}
+			if(posiciones.get(1) == 5) {
+				intentarBloquear(9);
+			}
+		}
+		
+		//en caso negativo la cpu procede a intentar ganar
+	}
+	
+	//procede a intentar bloquear la posicion indicada
+	public static void intentarBloquear(int x) {
+		if(sePuedeColocar(x)) {
+			btn[x].setText("O");
+		}else {//si no se puede recurre a una tactica diferente
+			//TODO:cambiar por intentar jugada
+			movimientoAleatorioCpu();
+		}
+	}
+	
+	public static void checkVictoria() {
+		/*
+		 * posibles victorias:
+		 * horizontal 1) 123
+		 * horizontal 2) 456
+		 * horizontal 3) 789
+		 *vertical 1) 147
+		 *vertical 2) 258
+		 *vertical 3) 369
+		 *diagonal 1) 159
+		 *diagonal 2) 357 */
+	
+	}
+	
 	//este es la tactica inicial de la CPU, y el ultimo recurso si se atasca
 	public static void movimientoAleatorioCpu() {
 		int x;
