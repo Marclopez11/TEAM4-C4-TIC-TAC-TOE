@@ -1,15 +1,12 @@
 package com.TEAM4_C4.TIC_TAC_TOE;
 
 import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.Random;
-
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-public class JuegoCPU extends JFrame {
+public class JuegoJugadores extends JFrame {
 
 	private JPanel contentPane;
 
@@ -30,9 +27,12 @@ public class JuegoCPU extends JFrame {
 	//lo pasamos a un array que nos servirá para acceder desde la cpu
 	//ademas lo pasamos astatic para que se use desde los metodos
 	static JToggleButton btn[] = new JToggleButton[9];
-	static JLabel infoTurno = new JLabel("Turno: 1");
+	public static Random r = new Random(); //Random estatico para acceder desde los metodos
+	static boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
+	public static int turno = 1;
+	static JLabel infoTurno = new JLabel("Turno: " + turno);
 	
-	public JuegoCPU() {
+	public JuegoJugadores() {
 
 		setTitle("Los treses en la línea [Team 4]");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,13 +191,6 @@ public class JuegoCPU extends JFrame {
 
 			}
 		});
-		
-		boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
-		
-		//si es el turno de la máquina que inicie la jugada (al ser el jugador dos su turno es cuando el bool JUGADOR es false)
-		if(!jugador) { //funciona
-			comportamientoCpu();
-		}
 
 		//action listener jugada para todos los botones
 		ActionListener jugada = new ActionListener() {
@@ -206,9 +199,15 @@ public class JuegoCPU extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//el boton se pasa por parametro con el get source que devuelve el OBJETO que ha activado el evento, en nuestro caso ha sido el JToggleButton
 				//como devuelve un OBJETO se tiene que CASTEAR a JToggleButton
-				movimientoJugador((JToggleButton) e.getSource());
+				if(jugador) {
+					movimientoJugadorX((JToggleButton) e.getSource());
+				}else {
+					movimientoJugadorO((JToggleButton) e.getSource());
+				}
+				
 				
 			}
+			
 		};
 		
 		//addActionListener a cada boton
@@ -224,29 +223,8 @@ public class JuegoCPU extends JFrame {
 		
 	}
 	
-	//este es el movimento del jugador que sucede desde su turno
-	public static void movimientoJugador(JToggleButton btn) {
-		//fase1 turno 1 al 3
-		//if(numeroTurno <= 6) {
-			//comprobamos si se puede colocar sePuedeColocar()
-			if(sePuedeColocar(btn)) {
-				//en caso que se pueda colocamos la ficha
-				btn.setText("X");
-				//pasamos a mirar si hemos ganado
-				//pasamos turno
-				comportamientoCpu();
-			}else{	//en caso que no se pueda informamos al usuario
-				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
-			}
-		//}else { //fase2 a partir del turno 3
-			//se comprueba si es su ficha para mover
-			
-			//se mueve a un espacio vacío sePuedeColocar()
-		//}
-	}
-	
 	//metodo para ver si se puede colocar
-	public static boolean sePuedeColocar(JToggleButton btn) {
+	public boolean sePuedeColocar(JToggleButton btn) {
 		if(btn.getText() == " "){
 			return true;
 		}else {
@@ -254,125 +232,62 @@ public class JuegoCPU extends JFrame {
 		}
 	}
 	
-	//sobrecarga del metodo para que lo pueda usar la CPU
-	public static boolean sePuedeColocar(int x) {
-		if(btn[x].getText() == " "){
+	//metodo para ver si se quitar la ficha
+	public boolean sePuedeQuitar(JToggleButton btn, char c) {
+		if(btn.getText().equals(c)){
 			return true;
 		}else {
 			return false;
 		}
 	}
 	
-	public static Random r = new Random(); //Random estatico para acceder desde los metodos
-	public static int numeroTurno = 0;//inicializamos a 1 para contar con el turno del jugador
-
-	public static void comportamientoCpu(){
-
-		//de momento se pone random
-			movimientoAleatorioCpu();
-
-	}
-	
-	//este es la tactica inicial de la CPU, y el ultimo recurso si se atasca
-	public static void movimientoAleatorioCpu() {
-		int x;
-		do {
-		//genera un numero del 0 al 8
-			x = r.nextInt(8);
-		//si se puede colocar pasa el bucle
-		}while(!sePuedeColocar(x));
-		//se coloca
-		btn[x].setText("O");
-	}
-	
-	//TODO Implementar
-	//moviento para decidir  intentar jugada o bloquear
-	public static void decidirJugadaCpu() {
-		//la cpu tiene como prioridad bloquear al jugador para eso se recorre el array y se mira cuantas fichas del jugador hay en tablero
-		int numeroX = 0;
-		for (int i = 0; i < btn.length; i++) {
-			if(btn[i].getText() == "X") {
-				numeroX++;
+	public void movimientoJugadorX(JToggleButton btn) {
+		//fase1 turno 1 al 6
+		if(turno <= 6) {
+			//comprobamos si se puede colocar sePuedeColocar()
+			if(sePuedeColocar(btn)) {
+				//en caso que se pueda colocamos la ficha
+				btn.setText("X");
+				//pasamos a mirar si hemos ganado
+				//pasamos turno a false TODO: Meter en metodo
+				turno++;
+				infoTurno.setText("Turno:" + turno);
+				jugador = false;
+			}else{	//en caso que no se pueda informamos al usuario
+				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
 			}
-		}
-		//si resulta que hay mas de dos fichas del jugador se va a intentar bloquear
-		if(numeroX >= 2) {
-			bloquearAlJugador();
-		}else { //TODO: Cambiar por intentar jugada
-			movimientoAleatorioCpu();
-		}
-	}
-	
-	public static void bloquearAlJugador() {
-		//se crea el array de posiciones
-		int posiciones[] = new int[3];
-		//se recorre el array de botones y se guardan las posiciones del JUGADOR
-		for (int i = 0; i < btn.length; i++) {
-			if(btn[i].getText() == "X") {
-				for (int j = 0; j < 3; j++) {
-					posiciones[j] = i+1; //se guardan las posiciones +1 para ahorrar tiempo calculando
-				}
-			}
-		}
-		//se calcula la posible victoria y se bloquea
-		//analizamos is las fichas estan en posicion de posible victoria h1)123 v1)147 d)159
-		if(posiciones[0] == 1 && (posiciones[1] == 2 || posiciones[1] == 4 || posiciones[1] == 5)) {
-			if(posiciones[1] == 2) {
-				intentarBloquear(3-1);
-				return;
-			}
-			if(posiciones[1] == 4) {
-				intentarBloquear(7-1);
-				return;
-			}
-			if(posiciones[1] == 5) {
-				intentarBloquear(9-1);
-				return;
-			}
-		}
-		//h1)123 //vertical 2) 258
-		if(posiciones[0] == 2 && (posiciones[1] == 5 || posiciones[1] == 1 || posiciones[1] == 3)) {
-			if(posiciones[1] == 5) {
-				intentarBloquear(8-1);
-				return;
-			}
-			if(posiciones[1] == 1) {
-				intentarBloquear(3-1);
-				return;
-			}
-			if(posiciones[1] == 3) {
-				intentarBloquear(1-1);
-				return;
-			}
+		}else { //fase2 a partir del turno 6
+			//se comprueba si es su ficha para mover
+			//JOptionPane.showMessageDialog(null, "Pasamos a fase 2");
+			//se mueve a un espacio vacío sePuedeColocar()
 		}
 		
-		//h1)123 vertical 3) 369
-		if(posiciones[0] == 3 && (posiciones[1] == 6 || posiciones[1] == 5 || posiciones[1] == 2)) {
-			if(posiciones[1] == 6) {
-				intentarBloquear(9-1);
-				return;
-			}
-			if(posiciones[1] == 5) {
-				intentarBloquear(7-1);
-				return;
-			}
-			if(posiciones[1] == 2) {
-				intentarBloquear(1-1);
-				return;
-			}
-		}
-		
-		//en caso negativo la cpu procede a intentar ganar
 	}
 	
-	//procede a intentar bloquear la posicion indicada
-	public static void intentarBloquear(int x) {
-		if(sePuedeColocar(x)) {
-			btn[x].setText("O");
-		}else {//si no se puede recurre a una tactica diferente
-			//TODO:cambiar por intentar jugada
-			movimientoAleatorioCpu();
+	public void movimientoJugadorO(JToggleButton btn) {
+		//fase1 turno 1 al 3
+		if(turno <= 6) {
+			//comprobamos si se puede colocar sePuedeColocar()
+			if(sePuedeColocar(btn)) {
+				//en caso que se pueda colocamos la ficha
+				btn.setText("O");
+				//pasamos a mirar si hemos ganado
+				//pasamos turno a true
+				turno++;
+				infoTurno.setText("Turno:" + turno);
+				jugador = true;
+			}else{	//en caso que no se pueda informamos al usuario
+				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
+			}
+		}else { //fase2 a partir del turno 3
+			//se comprueba si es su ficha para mover
+			JOptionPane.showMessageDialog(null, "Pasamos a fase 2");
+			//se mueve a un espacio vacío sePuedeColocar()
 		}
+		
 	}
-
+	
 }
+
+
+
