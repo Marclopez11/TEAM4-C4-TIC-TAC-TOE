@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -195,6 +196,8 @@ public class JuegoCPU extends JFrame {
 			}
 		});
 		
+		boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
+		
 		//si es el turno de la máquina que inicie la jugada (al ser el jugador dos su turno es cuando el bool JUGADOR es false)
 		if(!jugador) { //funciona
 			comportamientoCpu();
@@ -228,23 +231,22 @@ public class JuegoCPU extends JFrame {
 	//este es el movimento del jugador que sucede desde su turno
 	public static void movimientoJugador(JToggleButton btn) {
 		//fase1 turno 1 al 3
-		if(numeroTurno <= 3) {
+		//if(numeroTurno <= 6) {
 			//comprobamos si se puede colocar sePuedeColocar()
 			if(sePuedeColocar(btn)) {
 				//en caso que se pueda colocamos la ficha
 				btn.setText("X");
-				//pasamos el bool a false
-				jugador = false;
+				//pasamos a mirar si hemos ganado
 				//pasamos turno
 				comportamientoCpu();
 			}else{	//en caso que no se pueda informamos al usuario
 				JOptionPane.showMessageDialog(null, "No se puede colocar ahí");
 			}
-		}else { //fase2 a partir del turno 3
+		//}else { //fase2 a partir del turno 3
 			//se comprueba si es su ficha para mover
 			
 			//se mueve a un espacio vacío sePuedeColocar()
-		}
+		//}
 	}
 	
 	//metodo para ver si se puede colocar
@@ -255,6 +257,7 @@ public class JuegoCPU extends JFrame {
 			return false;
 		}
 	}
+	
 	//sobrecarga del metodo para que lo pueda usar la CPU
 	public static boolean sePuedeColocar(int x) {
 		if(btn[x].getText() == " "){
@@ -265,21 +268,27 @@ public class JuegoCPU extends JFrame {
 	}
 	
 	public static Random r = new Random(); //Random estatico para acceder desde los metodos
-	public static boolean jugador = r.nextBoolean(); //inicializamos un bool static para el jugador
 	public static int numeroTurno = 0;//inicializamos a 1 para contar con el turno del jugador
 
 	public static void comportamientoCpu(){
-		//sumamos turno
-		numeroTurno++;
-		infoTurno.setText("Turno: "+numeroTurno);
+
 		//de momento se pone random
-		if(numeroTurno == 1) {
 			movimientoAleatorioCpu();
-		}else if((numeroTurno <= 3)){
-			//decidirJugadaCpu();
-			movimientoAleatorioCpu();
-		}
+
 	}
+	
+	//este es la tactica inicial de la CPU, y el ultimo recurso si se atasca
+	public static void movimientoAleatorioCpu() {
+		int x;
+		do {
+		//genera un numero del 0 al 8
+			x = r.nextInt(8);
+		//si se puede colocar pasa el bucle
+		}while(!sePuedeColocar(x));
+		//se coloca
+		btn[x].setText("O");
+	}
+	
 	//TODO Implementar
 	//moviento para decidir  intentar jugada o bloquear
 	public static void decidirJugadaCpu() {
@@ -298,27 +307,62 @@ public class JuegoCPU extends JFrame {
 		}
 	}
 	
-	
 	public static void bloquearAlJugador() {
 		//se crea el array de posiciones
-		ArrayList<Integer> posiciones = new ArrayList<Integer>();
+		int posiciones[] = new int[3];
 		//se recorre el array de botones y se guardan las posiciones del JUGADOR
 		for (int i = 0; i < btn.length; i++) {
 			if(btn[i].getText() == "X") {
-				posiciones.add(i);
+				for (int j = 0; j < 3; j++) {
+					posiciones[j] = i+1; //se guardan las posiciones +1 para ahorrar tiempo calculando
+				}
 			}
 		}
 		//se calcula la posible victoria y se bloquea
 		//analizamos is las fichas estan en posicion de posible victoria h1)123 v1)147 d)159
-		if(posiciones.get(0) == 1 && (posiciones.get(1) == 2 || posiciones.get(1) == 4 || posiciones.get(1) == 5)) {
-			if(posiciones.get(1) == 2) {
-				intentarBloquear(3);
+		if(posiciones[0] == 1 && (posiciones[1] == 2 || posiciones[1] == 4 || posiciones[1] == 5)) {
+			if(posiciones[1] == 2) {
+				intentarBloquear(3-1);
+				return;
 			}
-			if(posiciones.get(1) == 4) {
-				intentarBloquear(7);
+			if(posiciones[1] == 4) {
+				intentarBloquear(7-1);
+				return;
 			}
-			if(posiciones.get(1) == 5) {
-				intentarBloquear(9);
+			if(posiciones[1] == 5) {
+				intentarBloquear(9-1);
+				return;
+			}
+		}
+		//h1)123 //vertical 2) 258
+		if(posiciones[0] == 2 && (posiciones[1] == 5 || posiciones[1] == 1 || posiciones[1] == 3)) {
+			if(posiciones[1] == 5) {
+				intentarBloquear(8-1);
+				return;
+			}
+			if(posiciones[1] == 1) {
+				intentarBloquear(3-1);
+				return;
+			}
+			if(posiciones[1] == 3) {
+				intentarBloquear(1-1);
+				return;
+			}
+		}
+		
+		//h1)123 vertical 3) 369
+		if(posiciones[0] == 3 && (posiciones[1] == 6 || posiciones[1] == 5 || posiciones[1] == 2)) {
+			if(posiciones[1] == 6) {
+				intentarBloquear(9-1);
+				return;
+			}
+			if(posiciones[1] == 5) {
+				intentarBloquear(7-1);
+				return;
+			}
+			if(posiciones[1] == 2) {
+				intentarBloquear(1-1);
+				return;
 			}
 		}
 		
@@ -334,30 +378,5 @@ public class JuegoCPU extends JFrame {
 			movimientoAleatorioCpu();
 		}
 	}
-	
-	public static void checkVictoria() {
-		/*
-		 * posibles victorias:
-		 * horizontal 1) 123
-		 * horizontal 2) 456
-		 * horizontal 3) 789
-		 *vertical 1) 147
-		 *vertical 2) 258
-		 *vertical 3) 369
-		 *diagonal 1) 159
-		 *diagonal 2) 357 */
-	
-	}
-	
-	//este es la tactica inicial de la CPU, y el ultimo recurso si se atasca
-	public static void movimientoAleatorioCpu() {
-		int x;
-		do {
-		//genera un numero del 0 al 8
-			x = r.nextInt(8);
-		//si se puede colocar pasa el bucle
-		}while(!sePuedeColocar(x));
-		//se coloca
-		btn[x].setText("O");
-	}
+
 }
