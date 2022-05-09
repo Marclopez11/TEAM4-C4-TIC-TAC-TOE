@@ -298,6 +298,7 @@ public class JuegoCPU extends JFrame {
 		}
 	}
 	
+	
 	public static void bloquearAlJugador() {
 		//se crea el array de posiciones
 		ArrayList<Integer> posiciones = new ArrayList<Integer>();
