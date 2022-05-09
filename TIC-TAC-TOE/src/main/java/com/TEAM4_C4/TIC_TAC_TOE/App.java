@@ -152,13 +152,13 @@ public class App extends JFrame {
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText("Player CPU");
 					//hacer visible la otra pestaña
-					abrir.setVisible(true);
+					abrirCPU.setVisible(true);
 					frame.setVisible(false);
 				//	
 				}else if (rdbtn2.isSelected() && !tfNombreJ2.getText().trim().isEmpty() && !tfNombreJ1.getText().trim().isEmpty()) {
 					Juego.labelNombre1.setText(tfNombreJ1.getText().trim());
 					Juego.labelNombre2.setText(tfNombreJ2.getText().trim());
-					abrirCPU.setVisible(true);
+					abrir.setVisible(true);
 					frame.setVisible(false);
 
 				} else {
